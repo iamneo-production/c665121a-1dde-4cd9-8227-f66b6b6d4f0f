@@ -1,0 +1,12 @@
+.navBar{
+    height: 5vh;
+    width: 100%;
+    background-color:black;
+}
+.navBar ul{
+    color:white;
+    font-size: 20px;
+    display: flex;
+    justify-content: space-between;
+    list-style: none;
+}
