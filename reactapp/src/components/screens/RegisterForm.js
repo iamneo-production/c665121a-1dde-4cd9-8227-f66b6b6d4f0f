@@ -25,11 +25,12 @@ function RegisterForm(){
       .min(6, 'Password must be at least 6 charaters')
       .required('Password is required'),
   })
-  const postDatatoServer=(data)=>{
+  const sendData=(data)=>{
     axios.post(`${base_url}/signup`,data).then(
       (response)=>{
         console.log(response);
         console.log("success");
+        alert("registered successfully!!");
       
       },(error)=>{
         console.log(error);
@@ -52,7 +53,7 @@ function RegisterForm(){
       onSubmit={values => {
       
         console.log(values);
-        postDatatoServer(values);
+        sendData(values);
       }}
     >
       {formik => (
