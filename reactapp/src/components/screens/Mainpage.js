@@ -10,7 +10,7 @@ function Mainpage(){
         
         <div className="home" style={{display:"flex",flexDirection:"column",alignItems:'center',justifyContent:'center'}}>
             
-                <h1 style={{color:"white",fontSize:70,marginBottom:40}}>WELCOME TO WATCH SERVICE</h1>
+                <h1 style={{color:"black",fontSize:70,marginBottom:40}}>WELCOME TO WATCH SERVICE</h1>
                 <nav>
                     <Link id="login-main"className="btn btn-dark mt-3"to="/Login">Login</Link>
                 

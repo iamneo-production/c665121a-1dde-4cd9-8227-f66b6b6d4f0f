@@ -15,14 +15,16 @@ function LoginForm(){
       
       .required('Password is required'),
   })
-  const postDatatoServer=(data)=>{
+  const sendData=(data)=>{
     axios.post(`${base_url}/login`,data).then(
       (response)=>{
         console.log(response);
-        console.log("success");
+        if(response.data==="valid user")
+        alert("user Logged In successfully")
+        else
+        alert("Invalid credenetials try again!")
       },(error)=>{
         console.log(error);
-        console.log("error");
       }
     )
   }
@@ -35,7 +37,7 @@ function LoginForm(){
       validationSchema={validate}
       onSubmit={values => {
         console.log(values);
-        postDatatoServer(values);
+        sendData(values);
       }}
     >
       {formik => (
