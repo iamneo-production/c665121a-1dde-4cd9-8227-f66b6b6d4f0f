@@ -11,7 +11,7 @@ function AddServiceForm(){
     name: Yup.string()
       .max(30, 'Must be 30 characters or less')
       .required('Name is Required'),
-    phone:Yup.string()
+    mobile:Yup.string()
       .min(10,'should be 10 number')
       .max(10,'should be 10 number')
       .required('Phone Number is Required'),
@@ -23,12 +23,12 @@ function AddServiceForm(){
     email: Yup.string()
       .email('Email is invalid')
       .required('Email is required'),
-    description: Yup.string()
+    details: Yup.string()
       .max(250, 'Must be 250 characters or less')
       .required('Description is required'),
   })
   const sendData=(data)=>{
-    axios.post(`${base_url}/addCenter`,data).then(
+    axios.post(`${base_url}/addServiceCenter`,data).then(
       (response)=>{
         console.log(response);
       },(error)=>{
@@ -41,11 +41,11 @@ function AddServiceForm(){
       initialValues={{
         id:'',
         name: '',
-        phone: '',
+        mobile: '',
         address:'',
         imageurl: '',
         email: '',
-        description: '',
+        details: '',
       }}
       validationSchema={validate}
       onSubmit={values => {
@@ -61,11 +61,11 @@ function AddServiceForm(){
           
             <TextBar label="Center Id"  placeholder="Enter the id" name="id" type="number" id="addId" />
             <TextBar label="Name"  placeholder="Enter the Name" name="name" type="text" id="addName" />
-            <TextBar label="Mobile"  placeholder="Enter the Phone number" name="phone" type="text" id="addNumber" />
+            <TextBar label="Mobile"  placeholder="Enter the Phone number" name="mobile" type="text" id="addNumber" />
             <TextBar label="Address"  placeholder="Enter the address" name="address" type="text" id="addAddress" />
             <TextBar label="ImageUrl"  placeholder="Enter the Image Url" name="imageurl" type="text" id="addImageUrl" />
             <TextBar label="Email"  placeholder="Enter the mail id" name="email" type="email" id=" addEmail"/>
-            <TextBar  label="Description" placeholder="Description about Service center" name="description" type="text" id="addCenterDescription" style={{height:"80px"}}/>
+            <TextBar  label="Description" placeholder="Description about Service center" name="details" type="text" id="addCenterDescription" style={{height:"80px"}}/>
 
             
             <button className="btn btn-dark mt-3" type="submit">Add</button>

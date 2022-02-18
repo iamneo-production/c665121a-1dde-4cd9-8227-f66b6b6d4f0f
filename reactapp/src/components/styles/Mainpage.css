@@ -21,11 +21,11 @@ h1{
     
 }
 body{
-    background-image: url("watchbackground.jpg");
+    background-image: url("../assets/watchbackground.jpg");
 
   height: 500px; /* You must set a specified height */
   background-position: center; /* Center the image */
-  /*background-size: cover;*/
+  background-size: cover;
      
     
     
