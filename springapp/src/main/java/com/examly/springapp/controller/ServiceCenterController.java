@@ -29,7 +29,6 @@ public class ServiceCenterController {
 		ServiceCenter deleted = this.centerService.deleteCenter(Long.parseLong(id));
 		return deleted;
 	}
-	
 	@PutMapping("/updateCenter")
 		public ServiceCenter updateCenter(@RequestBody ServiceCenter center) {
 			return this.centerService.updateCenter(center);

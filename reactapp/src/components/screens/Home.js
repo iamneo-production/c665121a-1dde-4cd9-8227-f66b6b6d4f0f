@@ -6,14 +6,18 @@ import ListGroup from 'react-bootstrap/ListGroup';
 import ListGroupItem from 'react-bootstrap/ListGroupItem';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
-import { Container } from 'react-bootstrap';
+import { Container} from 'react-bootstrap';
 import Form from 'react-bootstrap/Form';
 import { Link } from "react-router-dom";
 import '../styles/Home.css';
-
+import Navbar from './Navbar'
 
 
 const Search = () => {
+
+  const throwDetails = (value)=>{
+    localStorage.setItem("data",JSON.stringify(value));
+  }
     const getAllCenters=()=>{
         axios.get(`${base_url}/viewAllCenter`).then(
             (response)=>{
@@ -63,6 +67,8 @@ const Search = () => {
       item[key].toString().toLowerCase().includes(filter.toString().toLowerCase())
   )});
   return (
+    <>
+    <Navbar/>
     <div className="home-body"style={{display:"flex",flexDirection:"column",alignItems:"center"}}>
 
         <Container className='text-center mt-4' style={{width:"40%"}}>
@@ -91,8 +97,8 @@ const Search = () => {
                 </ListGroup>
 
                 <Card.Body style={{alignItems:"center"}}>
-                <Link to="/"><button className="btn btn-dark " style={{marginRight:10}}>Edit</button></Link>
-                <Link to="/home"><button className="btn btn-danger" onClick={()=>{
+                <Link to="/admin/edit"><button className="btn btn-dark " onClick={()=>{throwDetails(center)}} style={{marginRight:10}}>Edit</button></Link>
+                <Link to="/admin/home"><button className="btn btn-danger" onClick={()=>{
                     deleteCourse(center.id);
                 }} >Remove</button></Link>
                 </Card.Body>
@@ -106,6 +112,7 @@ const Search = () => {
       </div>
      
     </div>
+    </>
   )
 }
 
