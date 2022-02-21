@@ -4,6 +4,8 @@ import TextBar from './TextBar';
 import * as Yup from 'yup';
 import axios from 'axios';
 import { Link } from "react-router-dom";
+import { ToastContainer, toast } from 'react-toastify';
+  import 'react-toastify/dist/ReactToastify.css';
 import base_url from '../../api/bootapi';
 function RegisterForm(){
   const validate = Yup.object({
@@ -29,18 +31,18 @@ function RegisterForm(){
     axios.post(`${base_url}/signup`,data).then(
       (response)=>{
         console.log(response);
-        console.log("success");
-        alert("registered successfully!!");
-        window.location.replace('/Login');
+        toast.success('registration successful!',{autoClose: 2000});
+        setTimeout(() => {  window.location.replace('/Login'); }, 2000);
       
       },(error)=>{
         console.log(error);
-        alert("email already exists");
-        console.log("error");
+        toast.error('registration failed!',{autoClose: 2000});
       }
     )
   }
   return (
+    <>
+    <ToastContainer/>
     <Formik
       initialValues={{
         
@@ -81,6 +83,7 @@ function RegisterForm(){
         </div>
       )}
     </Formik>
+    </>
   )
 } 
 export default RegisterForm;

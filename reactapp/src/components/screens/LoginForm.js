@@ -5,6 +5,8 @@ import * as Yup from 'yup';
 import axios from 'axios';
 import { Link } from "react-router-dom";
 import base_url from '../../api/bootapi';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 function LoginForm(){
   const validate = Yup.object({
     
@@ -20,17 +22,28 @@ function LoginForm(){
       (response)=>{
         console.log(response);
         if(response.data==="invalid user")
-        alert("Invalid credenetials try again!")
+        toast.error('Invalid credentials',{autoClose: 2000});
         else{
-          if(response.data==="admin") window.location.replace('/admin/home');
-          if(response.data==="user") window.location.replace('/user/home');
+          if(response.data==="admin") {
+            toast.success('Welcome Admin',{autoClose: 2000});
+            setTimeout(() => { window.location.replace('/admin/home'); }, 2000);
+            
+          };
+          if(response.data==="user") {
+            toast.success('Welcome User',{autoClose: 2000});
+            setTimeout(() => {  window.location.replace('/user/home'); }, 2000);
+          }
+         
         }
       },(error)=>{
         console.log(error);
+        toast.error('OOPs... Server is busy try again',{autoClose: 2000});
       }
     )
   }
   return (
+    <>
+    <ToastContainer/>
     <Formik
       initialValues={{
         email: '',
@@ -61,6 +74,7 @@ function LoginForm(){
         </div>
       )}
     </Formik>
+    </>
   )
 } 
 export default LoginForm;
