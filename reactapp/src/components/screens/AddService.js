@@ -32,6 +32,7 @@ function AddServiceForm(){
     axios.post(`${base_url}/addServiceCenter`,data).then(
       (response)=>{
         console.log(response);
+        window.location.replace('/admin/home');
       },(error)=>{
         console.log(error);
       }
@@ -54,6 +55,7 @@ function AddServiceForm(){
         console.log(values);
         sendData(values);
         resetForm();
+       
       }}
     >
       {formik => (

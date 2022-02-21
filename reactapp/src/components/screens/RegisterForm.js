@@ -31,6 +31,7 @@ function RegisterForm(){
         console.log(response);
         console.log("success");
         alert("registered successfully!!");
+        window.location.replace('/Login');
       
       },(error)=>{
         console.log(error);

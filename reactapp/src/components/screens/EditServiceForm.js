@@ -55,6 +55,7 @@ function EditServiceForm(){
         console.log(values);
         sendData(values);
         localStorage.setItem('data',JSON.stringify(values));
+        window.location.replace('/admin/home');
       }}
     >
       {formik => (
