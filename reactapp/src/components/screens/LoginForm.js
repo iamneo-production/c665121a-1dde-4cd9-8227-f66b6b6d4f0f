@@ -19,10 +19,12 @@ function LoginForm(){
     axios.post(`${base_url}/login`,data).then(
       (response)=>{
         console.log(response);
-        if(response.data==="valid user")
-        alert("user Logged In successfully")
-        else
+        if(response.data==="invalid user")
         alert("Invalid credenetials try again!")
+        else{
+          if(response.data==="admin") window.location.replace('/admin/home');
+          if(response.data==="user") window.location.replace('/user/home');
+        }
       },(error)=>{
         console.log(error);
       }

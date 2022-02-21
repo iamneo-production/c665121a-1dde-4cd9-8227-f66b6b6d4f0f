@@ -38,7 +38,7 @@ public class MyController {
 		for(Users u:user){
 			if((login.getEmail().equals(u.getEmail()))&&(login.getPassword().equals(u.getPassword()))) 
 			{
-				return "valid user";
+				return u.getRole();
 			}
 		}
 		return "invalid user";
