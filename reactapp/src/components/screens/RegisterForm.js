@@ -31,8 +31,22 @@ function RegisterForm(){
     axios.post(`${base_url}/signup`,data).then(
       (response)=>{
         console.log(response);
-        toast.success('registration successful!',{autoClose: 2000});
-        setTimeout(() => {  window.location.replace('/Login'); }, 2000);
+        if(response.data==="Email"){
+          toast.error('Email Already exist!!',{autoClose: 2000});
+        }
+        if(response.data==="Mobile"){
+          toast.error('Mobile Number  Already exist!!',{autoClose: 2000});
+        }
+        if(response.data==="Username"){
+          toast.error('Username  Already exist!!',{autoClose: 2000});
+        }
+        if(response.data==="Success"){
+          toast.success('registration successful!',{autoClose: 2000});
+          setTimeout(() => {  window.location.replace('/Login'); }, 2000);
+        }
+        if(response.data==="Error"){
+          toast.error('Something went Wrong Try again!!',{autoClose: 2000});
+        }
       
       },(error)=>{
         console.log(error);

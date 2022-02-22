@@ -26,7 +26,7 @@ public class MyController {
 	}
 	@CrossOrigin(origins = "http://localhost:3000")
 	@PostMapping("/signup")
-	public Users addUser(@RequestBody Users user,HttpSession session) {
+	public String addUser(@RequestBody Users user,HttpSession session) {
 		user.setRole("user");
 		return this.User.addUser(user);
 	}

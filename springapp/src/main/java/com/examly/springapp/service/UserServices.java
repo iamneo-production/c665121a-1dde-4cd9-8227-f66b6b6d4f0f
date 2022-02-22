@@ -7,5 +7,5 @@ import com.examly.springapp.entity.Users;
 public interface UserServices {
 	public List<Users> getUser();
 
-	public Users addUser(Users user);
+	public String addUser(Users user);
 }

@@ -24,11 +24,29 @@ public class UserServiceimpl implements UserServices {
 		return this.dao.findAll();
 	}
 	@Override
-	public Users addUser(Users user) {
+	public String addUser(Users user) {
 		// TODO Auto-generated method stub
-//		list.add(new Users(user.getName(),user.getUsername(),user.getMobile(),user.getEmail(),user.getPassword()));
-		dao.save(user);
-		return user;
+//		list.add(new Users(user.getName(),user.getUsername(),user.getMobile(),user.getEmail(),user.getPassword()))
+
+		boolean emailAlreadyExists = dao.existsUserByEmail(user.getEmail());
+		boolean userNameAlreadyExists = dao.existsUserByUsername(user.getUsername());
+        boolean mobileAlreadyExists = dao.existsUserByMobile(user.getMobile());
+
+        if (emailAlreadyExists) {
+            return "Email";
+        }
+        if (mobileAlreadyExists) {
+            return "Mobile";
+        }
+		if (userNameAlreadyExists){
+			return "Username";
+		}
+        try {
+            dao.save(user);
+            return "Success";
+        } catch (Exception e) {
+            return "Error";
+        }
 	}
 
 }
