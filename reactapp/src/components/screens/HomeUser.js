@@ -10,10 +10,10 @@ import { Container} from 'react-bootstrap';
 import Form from 'react-bootstrap/Form';
 import { Link } from "react-router-dom";
 import '../styles/Home.css';
-import Navbar from './Navbar'
+import NavbarUser from './NavbarUser';
 
 
-const Search = () => {
+const HomeUser = () => {
 
   const throwDetails = (value)=>{
     localStorage.setItem("data",JSON.stringify(value));
@@ -43,20 +43,7 @@ const Search = () => {
             "details": 'fastrack service'
         }
     ]);
-    const deleteCourse=(value)=>{
-        axios.delete(`${base_url}/deleteCenter/${value}`).then(
-            (response)=>{
-                console.log("center Deleted");
-                console.log(response);
-                refreshPage();
-            },(error)=>{
-                console.log(error);
-            }
-        )
-    }
-    const refreshPage=()=>{
-        window.location.reload(false);
-    }
+
   const [filter,setFilter] = useState('');
 
   const SearchText = (event) =>{
@@ -68,7 +55,7 @@ const Search = () => {
   )});
   return (
     <>
-    <Navbar/>
+    <NavbarUser/>
     <div className="home-body"style={{display:"flex",flexDirection:"column",alignItems:"center"}}>
 
         <Container className='text-center mt-4' style={{width:"40%"}}>
@@ -97,10 +84,7 @@ const Search = () => {
                 </ListGroup>
 
                 <Card.Body style={{alignItems:"center"}}>
-                <Link to="/admin/edit"><button className="btn btn-dark " onClick={()=>{throwDetails(center)}} style={{marginRight:10}}>Edit</button></Link>
-                <Link to="/admin/home"><button className="btn btn-danger" onClick={()=>{
-                    deleteCourse(center.id);
-                }} >Remove</button></Link>
+                <Link to="/user/Appointment"><button className="btn btn-success " onClick={()=>{throwDetails(center)}}>View</button></Link>
                 </Card.Body>
               </Card>
              
@@ -116,4 +100,4 @@ const Search = () => {
   )
 }
 
-export default Search
+export default HomeUser;

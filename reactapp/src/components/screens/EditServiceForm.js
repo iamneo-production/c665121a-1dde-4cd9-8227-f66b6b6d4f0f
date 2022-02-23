@@ -4,8 +4,9 @@ import TextBar from './TextBar';
 import * as Yup from 'yup';
 import axios from 'axios';
 import base_url from '../../api/bootapi';
+function EditServiceForm(){
 
-function AddServiceForm(){
+  let center=JSON.parse(localStorage.getItem('data'));
   const validate = Yup.object({
     id:Yup.string()
       .required('Id is required'),
@@ -29,10 +30,9 @@ function AddServiceForm(){
       .required('Description is required'),
   })
   const sendData=(data)=>{
-    axios.post(`${base_url}/addServiceCenter`,data).then(
+    axios.put(`${base_url}/updateCenter`,data).then(
       (response)=>{
         console.log(response);
-        window.location.replace('/admin/home');
       },(error)=>{
         console.log(error);
       }
@@ -41,37 +41,38 @@ function AddServiceForm(){
   return (
     <Formik
       initialValues={{
-        id:'',
-        name: '',
-        mobile: '',
-        address:'',
-        imageurl: '',
-        email: '',
-        details: '',
+        id:center.id,
+        name:center.name,
+        mobile: center.mobile,
+        address:center.address,
+        imageurl: center.imageurl,
+        email: center.email,
+        details: center.details,
       }}
       validationSchema={validate}
-      onSubmit={(values, { resetForm }) => {
+      onSubmit={values => {
       
         console.log(values);
         sendData(values);
-        resetForm();
-       
+        localStorage.setItem('data',JSON.stringify(values));
+        window.location.replace('/admin/home');
       }}
     >
       {formik => (
         <div>
-          <h1 className='mt-4'style={{fontWeight:"bold"}} >Add Center </h1>
+          <h1 className='mt-4'style={{fontWeight:"bold"}} >Edit Center </h1>
           <Form>
           
-            <TextBar label="Center Id"  placeholder="Enter the id" name="id" type="number" id="addId" />
-            <TextBar label="Name"  placeholder="Enter the Name" name="name" type="text" id="addName" />
-            <TextBar label="Mobile"  placeholder="Enter the Phone number" name="mobile" type="text" id="addNumber" />
-            <TextBar label="Address"  placeholder="Enter the address" name="address" type="text" id="addAddress" />
-            <TextBar label="ImageUrl"  placeholder="Enter the Image Url" name="imageurl" type="text" id="addImageUrl" />
-            <TextBar label="Email"  placeholder="Enter the mail id" name="email" type="email" id=" addEmail"/>
-            <TextBar  label="Description" placeholder="Description about Service center" name="details" type="text" id="addCenterDescription" style={{height:"80px"}}/>
+            <TextBar label="Center Id"   name="id" type="number" id="editId" />
+            <TextBar label="Name"   name="name" type="text" id="editName" />
+            <TextBar label="Mobile"   name="mobile" type="number" id="editNumber" />
+            <TextBar label="Address" name="address" type="text" id="editAddress" />
+            <TextBar label="ImageUrl"  name="imageurl" type="text" id="editImageUrl" />
+            <TextBar label="Email"   name="email" type="email" id=" editEmail"/>
+            <TextBar  label="Description"  name="details" type="text" id="editCenterDescription" style={{height:"80px"}}/>
 
-            <button className="btn btn-dark mt-3" type="submit">Add</button>
+            
+           <button className="btn btn-dark mt-3" type="submit">Update</button>
             <button className="btn btn-danger mt-3 ml-3"style={{marginLeft:15}} type="reset">Reset</button>
             
             
@@ -82,4 +83,4 @@ function AddServiceForm(){
     </Formik>
   )
 } 
-export default AddServiceForm;
+export default EditServiceForm;

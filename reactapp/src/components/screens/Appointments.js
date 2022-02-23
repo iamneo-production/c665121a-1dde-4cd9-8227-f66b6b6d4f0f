@@ -5,8 +5,10 @@ import * as Yup from 'yup';
 import axios from 'axios';
 import base_url from '../../api/bootapi';
 import '../styles/Appointments.css';
+import NavbarUser from './NavbarUser';
 
 function Appoinments(){
+  let center=JSON.parse(localStorage.getItem('data'));
   const validate = Yup.object({
     nameofproduct: Yup.string()
       
@@ -37,6 +39,8 @@ function Appoinments(){
     )
   }
   return (
+    <>
+    <NavbarUser/>
     <Formik
       initialValues={{
         
@@ -56,12 +60,12 @@ function Appoinments(){
       {formik => (
           <div className='contents'>
         <div className='Regdiv'>
-        <img src={"https://images.pexels.com/photos/190819/pexels-photo-190819.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"} alt="" className="img" />
+        <img src={center.imageurl} alt="" className="img" />
         <div className='address'>
-            <label>Name : timex service</label><br />
-            <label>Address : siliguri</label><br />
-            <label>E-mail:hellonew@gmail.com</label><br />
-            <label>Phone Number: 6574834541</label><br />
+            <label>Name : {center.name}</label><br />
+            <label>Address :{center.address}</label><br />
+            <label>E-mail:{center.email}</label><br />
+            <label>Phone Number: {center.mobile}</label><br />
         </div>
           <Form>
           <div className='inp'>
@@ -79,6 +83,7 @@ function Appoinments(){
         </div>
       )}
     </Formik>
+    </>
   )
 } 
 export default Appoinments;
