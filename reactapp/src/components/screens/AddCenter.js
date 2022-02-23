@@ -2,6 +2,7 @@ import React, {useState,useEffect} from 'react';
 import watchImg from '../assets/watch.png';
 import '../styles/AddCenter.css';
 import AddServiceForm from './AddService';
+import NavBar from './Navbar';
 function AddCenter(){
     useEffect(() => {
         document.title = "WatchService || AddCenter";
@@ -14,6 +15,8 @@ function AddCenter(){
           setTime(current);
       }
     return(
+        <>
+        <NavBar/>
         <div className='temp'>
         <div className="container mt-5 ">
             <div className="row" style={{justifyContent:'space-around'}}>
@@ -28,6 +31,7 @@ function AddCenter(){
             </div>
         </div>
         </div>
+        </>
     );
 }
 export default AddCenter;

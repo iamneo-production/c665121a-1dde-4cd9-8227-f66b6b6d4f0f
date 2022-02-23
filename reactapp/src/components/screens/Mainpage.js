@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import '../styles/Mainpage.css';
 function Mainpage(){
     useEffect(() => {
-        document.title = "WatchService  ||  Home";
+        document.title = "WatchService  ||  Welcome";
       },[]);
     return(
         
