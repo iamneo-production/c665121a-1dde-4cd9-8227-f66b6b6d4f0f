@@ -5,11 +5,13 @@
 
 @import url('https://fonts.googleapis.com/css?family=Orbitron');
 
-
-.contents{
-    height: 99.8vh;
-    margin-top:-48px;
+.App-temp{
+    height: 130vh;
     background: linear-gradient(135deg, var(--primary),var(--secondary));
+    
+}
+.contents{
+    height: 102vh;
     
 }
 
@@ -21,7 +23,7 @@
     margin-left: 15%;
     position: relative;
     top: 9vh;
-    height: 80vh;
+    height: 100%;
 
 }
 

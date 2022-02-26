@@ -33,15 +33,15 @@ public class MyController {
 	
 	@CrossOrigin(origins = "http://localhost:3000")
 	@PostMapping("/login")
-	public String validateUser(@RequestBody Login login) {
+	public Users validateUser(@RequestBody Login login) {
 		List<Users> user = getUser();
 		for(Users u:user){
 			if((login.getEmail().equals(u.getEmail()))&&(login.getPassword().equals(u.getPassword()))) 
 			{
-				return u.getRole();
+				return u;
 			}
 		}
-		return "invalid user";
+		return null;
 	}
 	
 	
