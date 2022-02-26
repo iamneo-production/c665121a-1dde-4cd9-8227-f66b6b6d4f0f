@@ -21,15 +21,16 @@ function LoginForm(){
     axios.post(`${base_url}/login`,data).then(
       (response)=>{
         console.log(response);
-        if(response.data==="invalid user")
+        localStorage.setItem("user",JSON.stringify(response.data));
+        if(response.data==="")
         toast.error('Invalid credentials',{autoClose: 2000});
         else{
-          if(response.data==="admin") {
+          if(response.data.role==="admin") {
             toast.success('Welcome Admin',{autoClose: 2000});
             setTimeout(() => { window.location.replace('/admin/home'); }, 2000);
             
           };
-          if(response.data==="user") {
+          if(response.data.role==="user") {
             toast.success('Welcome User',{autoClose: 2000});
             setTimeout(() => {  window.location.replace('/user/home'); }, 2000);
           }
