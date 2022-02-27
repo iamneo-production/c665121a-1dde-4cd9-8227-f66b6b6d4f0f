@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestController
+@CrossOrigin(origins = "http://localhost:3000")
 public class AppointmentController {
     @Autowired
     private AppointmentService Appointments;
@@ -31,5 +32,14 @@ public class AppointmentController {
             }
         }
         return result;
+    }
+    @PutMapping("/editAppointment")
+    public Appointment editAppointment(@RequestBody Appointment appointment){
+        return this.Appointments.editAppointment(appointment);
+    }
+
+    @DeleteMapping("/deleteAppointment/{id}")
+    public Appointment deleteAppointment(@PathVariable String id){
+        return this.Appointments.deleteAppointment(Long.parseLong(id));
     }
 }

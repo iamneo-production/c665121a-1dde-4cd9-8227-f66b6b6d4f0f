@@ -24,14 +24,16 @@ function Appoinments(){
       .transform((curr, orig) => orig === '' ? null : curr)
       .required('Date is required'),
     problemStatement:  Yup.string()
-      
       .required('Please enter the problem of the product'),
+    bookingTime:Yup.number()
+      .required('Please mention time for your booking')
+      .min(10,'choose a time between 10am to 5pm')
+      .max(17,'choose a time between 10am to 5pm')
   })
   const postDatatoServer=(data)=>{
-    axios.post(`${base_url}/`,data).then(
+    axios.post(`${base_url}/appointment`,data).then(
       (response)=>{
         console.log(response);
-        console.log("success");
       
       },(error)=>{
         console.log(error);
@@ -79,7 +81,7 @@ function Appoinments(){
             <TextBar label="Mobile" name="contactNumber" type="text" />
             <TextBar label="Date of Purchase" name="purchaseDate" type="date" />
             <TextBar label="Date of booking" name="bookingDate" type="date" />
-            <TextBar label="Time of booking" name="bookingTime" type="number" />
+            <TextBar label="Time of booking" placeholder="choose time in 24hr format" name="bookingTime" type="number" />
             <TextBar  label="Problem" placeholder="Description about problem" name="problemStatement" type="text" style={{height:"80px"}}/>
             <button className="btn btn-dark mt-3 ml-3"style={{marginLeft:15}} type="reset">Reset</button>
             <button className="btn btn-success mt-3"style={{marginLeft:40}} type="submit">BOOK</button>

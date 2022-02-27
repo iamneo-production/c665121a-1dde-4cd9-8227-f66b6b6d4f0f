@@ -21,4 +21,23 @@ public class AppointmentServiceimpl implements AppointmentService{
     public List<Appointment> allAppointments() {
         return this.appointmentDao.findAll();
     }
+
+    @Override
+    public Appointment editAppointment(Appointment appointment) {
+        this.appointmentDao.save(appointment);
+        return appointment;
+    }
+
+    @Override
+    public Appointment deleteAppointment(long id) {
+        List<Appointment> appointments = allAppointments();
+        Appointment appointment = new Appointment();
+        for(Appointment a:appointments){
+            if(a.getBook_id()==id){
+                appointment = a;
+                this.appointmentDao.delete(appointment);
+            }
+        }
+        return appointment;
+    }
 }
