@@ -11,7 +11,8 @@ import {
   BrowserRouter as Router,Switch,Route} from "react-router-dom";
 import Search from "./components/screens/Home";
 import HomeUser from "./components/screens/HomeUser";
-import user from "./components/screens/User";
+import User from "./components/screens/User";
+import EditUser from "./components/screens/EditUser";
 function App() {
   return (
     
@@ -24,9 +25,10 @@ function App() {
         <Route path="/admin/home" exact component={Search}></Route>
         <Route path="/admin/AddServiceCenter" exact component={AddCenter}></Route>
         <Route path="/admin/Edit" exact component={EditCenter}></Route>
+        <Route path="/admin/Edituser" exact component={EditUser}></Route>
         <Route path="/user/home" exact component={HomeUser}></Route>
         <Route path="/user/Appointment" exact component={Appointments}></Route>
-        <Route path="/admin/usermanagement" exact component={user}></Route>
+        <Route path="/admin/usermanagement" exact component={User}></Route>
         <Route path="/**" exact component={Error}></Route>
       </Switch>
     </Router>

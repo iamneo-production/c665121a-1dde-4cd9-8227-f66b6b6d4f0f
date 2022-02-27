@@ -7,6 +7,7 @@ import base_url from '../../api/bootapi';
 function EditServiceForm(){
 
   let center=JSON.parse(localStorage.getItem('data'));
+  
   const validate = Yup.object({
     id:Yup.string()
       .required('Id is required'),
