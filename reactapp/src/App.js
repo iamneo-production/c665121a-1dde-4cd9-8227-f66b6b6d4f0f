@@ -7,6 +7,8 @@ import Error from './components/screens/Error'
 import AddCenter from "./components/screens/AddCenter"
 import Appointments from './components/screens/Appointments'
 import EditCenter from './components/screens/EditCenter'
+import MyBookings from "./components/screens/MyBookings";
+import ViewUserBookings from "./components/screens/ViewUserBookings";
 import {
   BrowserRouter as Router,Switch,Route} from "react-router-dom";
 import Search from "./components/screens/Home";
@@ -25,6 +27,9 @@ function App() {
         <Route path="/admin/Edit" exact component={EditCenter}></Route>
         <Route path="/user/home" exact component={HomeUser}></Route>
         <Route path="/user/Appointment" exact component={Appointments}></Route>
+        <Route path="/admin/allBooking" exact component={MyBookings}></Route>
+        <Route path="/user/mybooking" exact component={ViewUserBookings}></Route>
+
         <Route path="/**" exact component={Error}></Route>
       </Switch>
     </Router>
