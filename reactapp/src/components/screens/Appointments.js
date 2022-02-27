@@ -34,6 +34,7 @@ function Appoinments(){
     axios.post(`${base_url}/appointment`,data).then(
       (response)=>{
         console.log(response);
+        window.location.replace("/user/mybooking");
       
       },(error)=>{
         console.log(error);
