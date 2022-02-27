@@ -20,8 +20,15 @@ public class UserServiceimpl implements UserServices {
 	public UserDao dao;
 	@Override
 	public List<Users> getUser() {
-		// TODO Auto-generated method stub
-		return this.dao.findAll();
+		List<Users> allUser = this.dao.findAll();
+		List<Users> onlyUser = new ArrayList<>();
+		for(Users u:allUser){
+			if(u.getRole().equals("admin")){
+				continue;
+			}
+			onlyUser.add(u);
+		}
+		return onlyUser;
 	}
 	@Override
 	public String addUser(Users user) {
