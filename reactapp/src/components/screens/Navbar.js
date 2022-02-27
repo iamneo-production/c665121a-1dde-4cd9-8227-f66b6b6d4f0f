@@ -51,6 +51,17 @@ function NavBar() {
             <li className="nav-item">
               <NavLink
                 exact
+                to="/admin/usermanagement"
+                activeClassName="active"
+                className="nav-links"
+                onClick={handleClick}
+              >
+                User Management
+              </NavLink>
+            </li>
+            <li className="nav-item">
+              <NavLink
+                exact
                 to="/"
                 activeClassName="active"
                 className="nav-links"

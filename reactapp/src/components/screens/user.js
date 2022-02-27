@@ -4,16 +4,19 @@ const data = [
   { username: "user1", useremail: "user@gmail.com", userphoneno: "698745123" },
   {username: "user1", useremail: "user@gmail.com", userphoneno: "698745123" },
   
+  
 ]
   
 function user() {
   return (
     <><NavBar /><div className="App">
-          <table border>
-              <tr>
+          <table >
+              <tr >
                   <th>Name</th>
+                
                   <th>Email</th>
                   <th>Phoneno</th>
+                  
               </tr>
               {data.map((val, key) => {
                   return (
