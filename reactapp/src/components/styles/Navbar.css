@@ -66,6 +66,9 @@
   background: #ffdd40;
 }
 
+.nav-links:hover{
+  color:#ffdd40;
+}
 .nav-item .active {
   color: #ffdd40;
   border: 1px solid #ffdd40;

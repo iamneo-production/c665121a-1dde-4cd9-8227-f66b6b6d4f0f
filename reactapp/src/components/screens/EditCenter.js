@@ -4,6 +4,7 @@ import EditServiceForm from './EditServiceForm';
 import NavBar from './Navbar';
 function EditCenter(){
     let center =JSON.parse( localStorage.getItem('data'));
+
     useEffect(() => {
         document.title = "WatchService || EditCenter";
       },[]);
