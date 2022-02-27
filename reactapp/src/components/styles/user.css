@@ -5,7 +5,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-     border-radius: 1em;
   }
   :root{
     --primary:#b5fac7;

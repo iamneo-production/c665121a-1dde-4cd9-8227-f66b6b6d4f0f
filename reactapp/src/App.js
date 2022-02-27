@@ -11,7 +11,7 @@ import {
   BrowserRouter as Router,Switch,Route} from "react-router-dom";
 import Search from "./components/screens/Home";
 import HomeUser from "./components/screens/HomeUser";
-import user from "./components/screens/user";
+import user from "./components/screens/User";
 function App() {
   return (
     
