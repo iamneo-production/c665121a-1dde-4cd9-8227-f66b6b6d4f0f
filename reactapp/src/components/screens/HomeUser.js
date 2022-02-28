@@ -88,7 +88,7 @@ const HomeUser = () => {
                 </Card.Body>
               </Card>
              
-            </Col>
+            </Col>    
            )
         })}
         

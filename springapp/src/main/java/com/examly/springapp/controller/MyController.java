@@ -1,21 +1,18 @@
 package com.examly.springapp.controller;
 
 import java.util.List;
-
+import java.util.ArrayList;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import com.examly.springapp.entity.Login;
 import com.examly.springapp.entity.Users;
 import com.examly.springapp.service.UserServices;
 
 @RestController
+@CrossOrigin(origins = "http://localhost:3000")
 public class MyController {
 	@Autowired
 	private UserServices User;
@@ -24,25 +21,46 @@ public class MyController {
 	public List<Users> getUser(){
 		return this.User.getUser();
 	}
-	@CrossOrigin(origins = "http://localhost:3000")
+	@GetMapping("/getOnlyUser")
+	public List<Users> getOnlyUser(){
+		List<Users> allUser = getUser();
+		List<Users> onlyUser = new ArrayList<>();
+		for(Users u:allUser){
+			if(u.getRole().equals("admin")){
+				continue;
+			}
+			onlyUser.add(u);
+		}
+		return onlyUser;
+	}
 	@PostMapping("/signup")
 	public String addUser(@RequestBody Users user,HttpSession session) {
 		user.setRole("user");
 		return this.User.addUser(user);
 	}
 	
-	@CrossOrigin(origins = "http://localhost:3000")
+	
 	@PostMapping("/login")
-	public String validateUser(@RequestBody Login login) {
+	public Users validateUser(@RequestBody Login login) {
 		List<Users> user = getUser();
 		for(Users u:user){
 			if((login.getEmail().equals(u.getEmail()))&&(login.getPassword().equals(u.getPassword()))) 
 			{
-				return u.getRole();
+				return u;
 			}
 		}
-		return "invalid user";
+		return null;
 	}
 	
-	
+	@PutMapping("/editUser")
+	public Users editUser(@RequestBody Users user){
+		this.User.editUser(user);
+		return user;
+	}
+
+	@DeleteMapping("/deleteUser/{id}")
+	public Users deleteUser(@PathVariable String id){
+		return this.User.deleteUser(Long.parseLong(id));
+	}
+
 }
