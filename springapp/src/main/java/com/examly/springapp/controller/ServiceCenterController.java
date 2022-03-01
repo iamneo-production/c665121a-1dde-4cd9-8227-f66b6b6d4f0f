@@ -1,7 +1,9 @@
 package com.examly.springapp.controller;
 
+import com.examly.springapp.config.SecurityUtils;
 import java.util.List;
 
+import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,6 +18,8 @@ public class ServiceCenterController {
 	
 	@PostMapping("/addServiceCenter")
 	public ServiceCenter addCenter(@RequestBody ServiceCenter center) {
+		Optional<String> currentUserLogin = SecurityUtils.getCurrentUserLogin();
+		System.out.println(currentUserLogin.get());
 		return this.centerService.addCenter(center);
 	}
 	
