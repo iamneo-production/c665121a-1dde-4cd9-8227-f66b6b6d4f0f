@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
-import base_url from "../../api/bootapi";
+import axiosObject from "../../api/bootapi";
 import '../styles/user.css'
 import NavBar from './Navbar';
 import Modal from 'react-modal';
@@ -22,7 +21,7 @@ const customStyles = {
 Modal.setAppElement('#root');
 
 const remove=(value)=>{
-    axios.delete(`${base_url}/deleteUser/${value}`).then(
+   axiosObject.delete(`/deleteUser/${value}`).then(
         (response)=>{
             console.log("User Deleted");
             console.log(response);
@@ -38,7 +37,7 @@ const refreshPage=()=>{
 function User() {
 
     const getAllUser=()=>{
-        axios.get(`${base_url}/getOnlyUser`).then(
+        axiosObject.get(`/getOnlyUser`).then(
             (response)=>{
                 console.log("user fetched");
                 setData(response.data);

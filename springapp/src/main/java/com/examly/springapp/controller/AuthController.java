@@ -5,6 +5,7 @@ import com.examly.springapp.entity.Users;
 import com.examly.springapp.model.JwtRequest;
 import com.examly.springapp.model.JwtResponse;
 import com.examly.springapp.service.JwtUserDetailsService;
+import com.examly.springapp.service.UserServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -21,6 +22,9 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @CrossOrigin
 public class AuthController {
+
+  @Autowired
+  private UserServices User;
 
   @Autowired
   private AuthenticationManager authenticationManager;
@@ -46,8 +50,8 @@ public class AuthController {
   }
 
   @RequestMapping(value = "/register", method = RequestMethod.POST)
-  public ResponseEntity<?> saveUser(@RequestBody Users user) throws Exception {
-    return ResponseEntity.ok(userDetailsService.save(user));
+  public ResponseEntity<?> addUser(@RequestBody Users user) throws Exception {
+    return ResponseEntity.ok(this.User.addUser(user));
   }
 
   private void authenticate(String username, String password) throws Exception {
