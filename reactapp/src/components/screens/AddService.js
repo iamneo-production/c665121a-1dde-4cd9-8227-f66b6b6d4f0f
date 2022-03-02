@@ -2,8 +2,7 @@ import React from 'react';
 import { Formik, Form} from 'formik';
 import TextBar from './TextBar';
 import * as Yup from 'yup';
-import axios from 'axios';
-import base_url from '../../api/bootapi';
+import axiosObject from '../../api/bootapi';
 
 function AddServiceForm(){
   const validate = Yup.object({
@@ -29,10 +28,10 @@ function AddServiceForm(){
       .required('Description is required'),
   })
   const sendData=(data)=>{
-    axios.post(`${base_url}/addServiceCenter`,data).then(
+    axiosObject.post(`/addServiceCenter`,data).then(
       (response)=>{
         console.log(response);
-        window.location.replace('/admin/home');
+        window.location.replace('/admin/home');//look for good method this not the correct one
       },(error)=>{
         console.log(error);
       }
