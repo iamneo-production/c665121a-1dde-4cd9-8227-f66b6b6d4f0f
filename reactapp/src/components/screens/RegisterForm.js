@@ -2,11 +2,10 @@ import React from 'react';
 import { Formik, Form} from 'formik';
 import TextBar from './TextBar';
 import * as Yup from 'yup';
-import axios from 'axios';
 import { Link } from "react-router-dom";
 import { ToastContainer, toast } from 'react-toastify';
   import 'react-toastify/dist/ReactToastify.css';
-import base_url from '../../api/bootapi';
+import axiosObject from '../../api/bootapi';
 function RegisterForm(){
   const validate = Yup.object({
     
@@ -28,7 +27,7 @@ function RegisterForm(){
       .required('Password is required'),
   })
   const sendData=(data)=>{
-    axios.post(`${base_url}/signup`,data).then(
+    axiosObject.post(`/register`,data).then(
       (response)=>{
         console.log(response);
         if(response.data==="Email"){

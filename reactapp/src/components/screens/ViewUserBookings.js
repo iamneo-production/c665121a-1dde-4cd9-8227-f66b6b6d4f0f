@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
-import base_url from "../../api/bootapi";
+import axiosObject from "../../api/bootapi";
 import NavbarUser from './NavbarUser';
 import Table from '@mui/material/Table';
 import { Modal,Button,OverlayTrigger,Tooltip } from "react-bootstrap";
@@ -21,7 +20,7 @@ function ViewUserBookings(){
     ]);
     let user=JSON.parse(localStorage.getItem('user'));
     const getUserBookings=()=>{
-        axios.get(`${base_url}/getAppointments/${user.id}`).then(
+        axiosObject.get(`/getAppointments/${user.id}`).then(
             (response)=>{
               console.log("centers fetched");
               setData(response.data);
@@ -31,7 +30,7 @@ function ViewUserBookings(){
           );
     };
     const remove=(value)=>{
-        axios.delete(`${base_url}/deleteAppointment/${value}`).then(
+        axiosObject.delete(`/deleteAppointment/${value}`).then(
             (response)=>{
                 console.log("User Deleted");
                 console.log(response);

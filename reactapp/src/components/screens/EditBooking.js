@@ -2,8 +2,7 @@ import React from 'react';
 import { Formik, Form} from 'formik';
 import TextBar from './TextBar';
 import * as Yup from 'yup';
-import axios from 'axios';
-import base_url from '../../api/bootapi';
+import axiosObject from '../../api/bootapi';
 
 function EditBooking({booking}){
 
@@ -20,7 +19,7 @@ function EditBooking({booking}){
       
     })
     const sendData=(data)=>{
-      axios.put(`${base_url}/editAppointment`,data).then(
+      axiosObject.put(`/editAppointment`,data).then(
         (response)=>{
           console.log(response);
           window.location.replace('/user/mybooking');

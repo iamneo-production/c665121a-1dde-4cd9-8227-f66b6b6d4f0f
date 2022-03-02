@@ -25,10 +25,7 @@ public class ServiceCenterServicesimpl implements ServiceCenterServices {
 		// TODO Auto-generated method stub
 		Optional<String> currentUserLogin = SecurityUtils.getCurrentUserLogin();
 		System.out.println(currentUserLogin.get());
-		if(!currentUserLogin.get().equals("admin")){
-			System.out.println("Your not an admin to add service");
-			return new ArrayList<>();
-		}
+		
 		return centerDao.findAll();
 	}
 	@Override

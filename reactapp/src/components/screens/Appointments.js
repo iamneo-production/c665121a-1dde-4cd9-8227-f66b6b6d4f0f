@@ -2,8 +2,7 @@ import React from 'react';
 import { Formik, Form} from 'formik';
 import TextBar from './TextBar';
 import * as Yup from 'yup';
-import axios from 'axios';
-import base_url from '../../api/bootapi';
+import axiosObject from '../../api/bootapi';
 import '../styles/Appointments.css';
 import NavbarUser from './NavbarUser';
 
@@ -31,7 +30,7 @@ function Appoinments(){
       .max(17,'choose a time between 10am to 5pm')
   })
   const postDatatoServer=(data)=>{
-    axios.post(`${base_url}/appointment`,data).then(
+    axiosObject.post(`/appointment`,data).then(
       (response)=>{
         console.log(response);
         window.location.replace("/user/mybooking");

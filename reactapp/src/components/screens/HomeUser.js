@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
-import base_url from "../../api/bootapi";
+import axiosObject from "../../api/bootapi";
 import Card from 'react-bootstrap/Card';
 import ListGroup from 'react-bootstrap/ListGroup';
 import ListGroupItem from 'react-bootstrap/ListGroupItem';
@@ -19,7 +18,7 @@ const HomeUser = () => {
     localStorage.setItem("data",JSON.stringify(value));
   }
     const getAllCenters=()=>{
-        axios.get(`${base_url}/viewAllCenter`).then(
+        axiosObject.get(`/viewAllCenter`).then(
             (response)=>{
               console.log("centers fetched");
               setCenters(response.data);
