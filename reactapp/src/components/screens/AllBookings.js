@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
-import base_url from "../../api/bootapi";
+import axiosObject from "../../api/bootapi";
 import NavBar from "./Navbar";
 import Table from '@mui/material/Table';
 import '../styles/MyBookings.css';
@@ -9,7 +8,7 @@ import { TableBody, TableCell, TableHead, TableRow } from "@mui/material";
 
 function AllBookings(){
     const getAllBookings=()=>{
-        axios.get(`${base_url}/getAppointments`).then(
+        axiosObject.get(`/getAppointments`).then(
             (response)=>{
               console.log("centers fetched");
               setData(response.data);

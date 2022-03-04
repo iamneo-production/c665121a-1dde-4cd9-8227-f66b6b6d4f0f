@@ -2,8 +2,7 @@ import React from 'react';
 import { Formik, Form} from 'formik';
 import TextBar from './TextBar';
 import * as Yup from 'yup';
-import axios from 'axios';
-import base_url from '../../api/bootapi';
+import axiosObject from '../../api/bootapi';
 import '../styles/Appointments.css';
 import '../styles/EditCenter.css';
 
@@ -24,7 +23,7 @@ function EditUser({user}) {
 })
 
 const sendData=(data)=>{
-    axios.put(`${base_url}/editUser`,data).then(
+   axiosObject.put(`/editUser`,data).then(
       (response)=>{
         console.log(response);
         window.location.replace('/admin/usermanagement');

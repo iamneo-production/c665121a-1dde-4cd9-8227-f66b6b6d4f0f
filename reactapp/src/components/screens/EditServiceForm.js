@@ -2,8 +2,7 @@ import React from 'react';
 import { Formik, Form} from 'formik';
 import TextBar from './TextBar';
 import * as Yup from 'yup';
-import axios from 'axios';
-import base_url from '../../api/bootapi';
+import axiosObject from '../../api/bootapi';
 function EditServiceForm(){
 
   let center=JSON.parse(localStorage.getItem('data'));
@@ -31,7 +30,7 @@ function EditServiceForm(){
       .required('Description is required'),
   })
   const sendData=(data)=>{
-    axios.put(`${base_url}/updateCenter`,data).then(
+    axiosObject.put(`/updateCenter`,data).then(
       (response)=>{
         console.log(response);
       },(error)=>{
