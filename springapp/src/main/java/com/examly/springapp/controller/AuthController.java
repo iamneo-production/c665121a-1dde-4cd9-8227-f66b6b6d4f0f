@@ -1,6 +1,8 @@
 package com.examly.springapp.controller;
 
 import com.examly.springapp.config.JwtUtility;
+import com.examly.springapp.config.SecurityUtils;
+import com.examly.springapp.dao.UserDao;
 import com.examly.springapp.entity.Users;
 import com.examly.springapp.model.JwtRequest;
 import com.examly.springapp.model.JwtResponse;
@@ -26,6 +28,10 @@ public class AuthController {
   @Autowired
   private UserServices User;
 
+
+  @Autowired
+  public UserDao dao;
+
   @Autowired
   private AuthenticationManager authenticationManager;
 
@@ -49,9 +55,17 @@ public class AuthController {
     return ResponseEntity.ok(new JwtResponse(token));
   }
 
+  @RequestMapping(value = "/mydetails", method = RequestMethod.GET)
+  public ResponseEntity<?> getMyDetails() throws Exception {
+    Users user = dao.findByUsername(SecurityUtils.getCurrentUserLogin().get());
+    return ResponseEntity.ok(user);
+  }
+
+
+
   @RequestMapping(value = "/register", method = RequestMethod.POST)
   public ResponseEntity<?> addUser(@RequestBody Users user) throws Exception {
-    return ResponseEntity.ok(this.User.addUser(user));
+    return ResponseEntity.ok(User.addUser(user));
   }
 
   private void authenticate(String username, String password) throws Exception {
