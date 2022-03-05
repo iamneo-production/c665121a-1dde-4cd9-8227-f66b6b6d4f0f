@@ -21,6 +21,10 @@ function LoginForm(){
     axiosObject.post("/authenticate",data).then(res=>{
       console.log(res);
       localStorage.setItem("usertoken",res.data.jwtToken);
+      axiosObject.get("/mydetails").then(res=>{
+        console.log(res.data);
+        localStorage.setItem("user",JSON.stringify(res.data));
+      })
       if(data.username==="admin") {
         toast.success('Welcome Admin',{autoClose: 2000});
         setTimeout(() => { window.location.replace('/admin/home'); }, 2000);

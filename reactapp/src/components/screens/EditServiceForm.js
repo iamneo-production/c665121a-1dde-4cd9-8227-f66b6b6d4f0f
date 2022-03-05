@@ -33,6 +33,8 @@ function EditServiceForm(){
     axiosObject.put(`/updateCenter`,data).then(
       (response)=>{
         console.log(response);
+        localStorage.setItem('data',JSON.stringify(response.data));
+        window.location.replace('/admin/home');
       },(error)=>{
         console.log(error);
       }
@@ -54,8 +56,6 @@ function EditServiceForm(){
       
         console.log(values);
         sendData(values);
-        localStorage.setItem('data',JSON.stringify(values));
-        window.location.replace('/admin/home');
       }}
     >
       {formik => (
