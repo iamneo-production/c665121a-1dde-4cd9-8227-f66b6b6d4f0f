@@ -30,10 +30,5 @@ public class JwtUserDetailsService implements UserDetailsService {
 				new ArrayList<>());
 	}
 
-	
-	public Users save(Users user) {
-		user.setPassword(bcryptEncoder.encode(user.getPassword()));
-		user.setRole("user");
-		return userDao.save(user);
-	}
+
 }
