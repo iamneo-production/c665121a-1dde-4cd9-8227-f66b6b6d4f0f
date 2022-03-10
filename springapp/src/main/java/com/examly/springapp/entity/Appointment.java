@@ -25,7 +25,7 @@ public class Appointment {
     private String problemStatement;
     private String contactNumber;
     private String bookingDate;
-    private int bookingTime;
+    private String bookingTime;
 
 }
 
