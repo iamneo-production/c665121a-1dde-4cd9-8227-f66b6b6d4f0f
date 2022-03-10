@@ -21,13 +21,21 @@ function Appoinments(){
       .required('Mobile Number is Required'),
     purchaseDate: Yup.date()
       .transform((curr, orig) => orig === '' ? null : curr)
-      .required('Date is required'),
+      .required('Date is required')
+      .nullable()
+      .max(new Date(), "Check the date properly!")
+      ,
+    bookingDate: Yup.date()
+    .transform((curr, orig) => orig === '' ? null : curr)
+    .required('Date is required')
+    .nullable()
+    .min(new Date(), "Check the date properly!")
+,
     problemStatement:  Yup.string()
       .required('Please enter the problem of the product'),
-    bookingTime:Yup.number()
-      .required('Please mention time for your booking')
-      .min(10,'choose a time between 10am to 5pm')
-      .max(17,'choose a time between 10am to 5pm')
+    bookingTime:Yup.string()
+      .required('Please mention time from 10.00AM to 7.00 PM')
+      
   })
   const postDatatoServer=(data)=>{
     axiosObject.post(`/appointment`,data).then(
@@ -81,7 +89,7 @@ function Appoinments(){
             <TextBar label="Mobile" name="contactNumber" type="text" />
             <TextBar label="Date of Purchase" name="purchaseDate" type="date" />
             <TextBar label="Date of booking" name="bookingDate" type="date" />
-            <TextBar label="Time of booking" placeholder="choose time in 24hr format" name="bookingTime" type="number" />
+            <TextBar label="Time of booking" placeholder="choose time in 24hr format" name="bookingTime" type="time" />
             <TextBar  label="Problem" placeholder="Description about problem" name="problemStatement" type="text" style={{height:"80px"}}/>
             <button className="btn btn-dark mt-3 ml-3"style={{marginLeft:15}} type="reset">Reset</button>
             <button className="btn btn-success mt-3"style={{marginLeft:40}} type="submit">BOOK</button>
