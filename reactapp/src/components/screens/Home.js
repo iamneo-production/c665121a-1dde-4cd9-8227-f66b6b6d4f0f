@@ -86,13 +86,13 @@ const Search = () => {
                 <Card.Body>
                   <Card.Title>{center.name}</Card.Title>
                   <Card.Text>
-                    {center.address}
+                    {center.details}
                   </Card.Text>
                 </Card.Body>
                 <ListGroup className="list-group-flush">
                   <ListGroupItem>PHONE : {center.mobile}</ListGroupItem>
                   <ListGroupItem>MAIL ID : {center.email}</ListGroupItem>
-                  
+                  <ListGroupItem>ADDRESS : {center.address}</ListGroupItem>
                 </ListGroup>
 
                 <Card.Body style={{alignItems:"center"}}>

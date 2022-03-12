@@ -6,6 +6,9 @@ function NavbarUser() {
   const [click, setClick] = useState(false);
 
   const handleClick = () => setClick(!click);
+  const handleLogout = () => {
+    localStorage.clear();
+  }
   return (
     <>
       <nav className="navbar">
@@ -43,7 +46,7 @@ function NavbarUser() {
                 to="/"
                 activeClassName="active"
                 className="nav-links"
-                onClick={handleClick}
+                onClick={handleLogout}
               >
                 Logout
               </NavLink>

@@ -18,8 +18,7 @@ function EditUser({user}) {
           .max(10,'should be 10 number'),
         email: Yup.string()
           .email('Email is invalid'),
-        password:Yup.string()
-          .min(8,'should contain 8 characters'),
+        
 })
 
 const sendData=(data)=>{
@@ -60,7 +59,7 @@ const sendData=(data)=>{
           <TextBar label="username"   name="username" type="text" id="editusername"/>
           <TextBar label="Email"   name="email" type="email" id=" editEmail"/>
           <TextBar label="Mobile"   name="mobile" type="number" id="editNumber" />
-          <TextBar label="Password"   name="password" type="text" id="editpassword"/>
+          
          <button className="btn btn-dark mt-3" type="submit">Update</button>
           <button className="btn btn-danger mt-3 ml-3"style={{marginLeft:15}} type="reset">Reset</button>
           
