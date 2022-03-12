@@ -7,34 +7,37 @@ import axiosObject from '../../api/bootapi';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 function LoginForm(){
-  // const validate = Yup.object({
+  const validate = Yup.object({
     
-  //   email: Yup.string()
-  //     .email('Email is invalid')
-  //     .required('Email is required'),
-  //   password: Yup.string()
+    username: Yup.string()
+      .required('Username is required'),
+    password: Yup.string()
       
-  //     .required('Password is required'),
-  // })
+      .required('Password is required'),
+  })
   const sendData=(data)=>{
     console.log("I'm here");
     axiosObject.post("/authenticate",data).then(res=>{
       console.log(res);
+      localStorage.setItem("isAuthenticated", "true");
       localStorage.setItem("usertoken",res.data.jwtToken);
       axiosObject.get("/mydetails").then(res=>{
         console.log(res.data);
         localStorage.setItem("user",JSON.stringify(res.data));
       })
       if(data.username==="admin") {
+        localStorage.setItem("isAdmin","true");
         toast.success('Welcome Admin',{autoClose: 2000});
         setTimeout(() => { window.location.replace('/admin/home'); }, 2000);
         
       } else {
+        localStorage.setItem("isUser","true");
         toast.success('Welcome User',{autoClose: 2000});
         setTimeout(() => {  window.location.replace('/user/home'); }, 2000);
       }
     }).catch(err=>{
       console.log(err);
+      toast.error('Invalid Credentials',{autoClose: 2000});
     })
   }
   return (
@@ -45,7 +48,7 @@ function LoginForm(){
         username: '',
         password: '',
       }}
-      // validationSchema={validate}
+      validationSchema={validate}
       onSubmit={values => {
         console.log(values);
         sendData(values);
