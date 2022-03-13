@@ -8,14 +8,31 @@ function EditBooking({booking}){
 
     const validate = Yup.object({
         
-        contactNumber:Yup.string()
-        .min(10,'should be 10 number')
-        .max(10,'should be 10 number')
-        .required('Phone Number is Required'),
-        bookingTime:Yup.number()
-        .required('Please mention time for your booking')
-        .min(10,'choose a time between 10am to 5pm')
-        .max(17,'choose a time between 10am to 5pm')
+      productName: Yup.string()
+      
+      .required('Name of the product is Required'),
+    productModelNo: Yup.string()
+      .required('Model number is Required'),
+    contactNumber:Yup.string()
+      .min(10,'should be 10 number')
+      .max(10,'should be 10 number')
+      .required('Mobile Number is Required'),
+    purchaseDate: Yup.date()
+      .transform((curr, orig) => orig === '' ? null : curr)
+      .required('Date is required')
+      .nullable()
+      .max(new Date(), "Check the date properly!")
+      ,
+    bookingDate: Yup.date()
+    .transform((curr, orig) => orig === '' ? null : curr)
+    .required('Date is required')
+    .nullable()
+    .min(new Date(), "Check the date properly!")
+,
+    problemStatement:  Yup.string()
+      .required('Please enter the problem of the product'),
+    bookingTime:Yup.string()
+      .required('Please mention time from 10.00AM to 7.00 PM')
       
     })
     const sendData=(data)=>{
@@ -61,7 +78,7 @@ function EditBooking({booking}){
               <TextBar label="DateOfPurchase" name="purchaseDate" type="date" id="editDate" />
               <TextBar label="DateOfBooking" name="bookingDate" type="date" id="editDate" />
               <TextBar label="Contact"  name="contactNumber" type="text" id="editContact" />
-              <TextBar  label="Slot Time"  name="bookingTime" type="text" id="editSlot" />
+              <TextBar  label="Slot Time"  name="bookingTime" type="time" id="editSlot" />
               <TextBar label="Problem"   name="problemStatement" type="text" id=" editProblem"style={{height:"80px"}}/>
   
               
