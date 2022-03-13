@@ -12,7 +12,7 @@ import {
   BrowserRouter as Router,Switch,Route} from "react-router-dom";
 import Search from "./components/screens/Home";
 import HomeUser from "./components/screens/HomeUser";
-import User from "./components/screens/User";
+import User from "./components/screens/user";
 import EditUser from "./components/screens/EditUser";
 import AllBookings from "./components/screens/AllBookings";
 function App() {
