@@ -5,6 +5,7 @@ import java.util.List;
 
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import com.examly.springapp.entity.ServiceCenter;
@@ -20,7 +21,10 @@ public class ServiceCenterController {
 	public ServiceCenter addCenter(@RequestBody ServiceCenter center) {
 		Optional<String> currentUserLogin = SecurityUtils.getCurrentUserLogin();
 		System.out.println(currentUserLogin.get());
-		return this.centerService.addCenter(center);
+		if(currentUserLogin.get() == "admin"){
+			return this.centerService.addCenter(center);
+		}
+		return null;
 	}
 	
 	@GetMapping("/viewAllCenter")
