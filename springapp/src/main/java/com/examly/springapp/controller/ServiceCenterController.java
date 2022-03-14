@@ -20,11 +20,13 @@ public class ServiceCenterController {
 	@PostMapping("/addServiceCenter")
 	public ServiceCenter addCenter(@RequestBody ServiceCenter center) {
 		Optional<String> currentUserLogin = SecurityUtils.getCurrentUserLogin();
-		System.out.println(currentUserLogin.get());
-		if(currentUserLogin.get() == "admin"){
+		System.out.println("add Center request isAdmin-> "+currentUserLogin.get().equals("admin"));
+		if(currentUserLogin.get().equals("admin")){
+			System.out.println(currentUserLogin.get());
 			return this.centerService.addCenter(center);
+		}else {
+			return null;
 		}
-		return null;
 	}
 	
 	@GetMapping("/viewAllCenter")
