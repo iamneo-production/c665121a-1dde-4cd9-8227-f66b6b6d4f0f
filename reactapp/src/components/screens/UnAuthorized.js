@@ -7,7 +7,7 @@ import { useEffect } from 'react'
 
 export default function UnAuthorized() {
     useEffect(() => {
-        document.title = "WatchService  || 404 page not found";
+        document.title = "WatchService  || Access denied";
       },[]);
       const handleLogout = () => {
         localStorage.clear();
@@ -21,10 +21,11 @@ export default function UnAuthorized() {
                 exact
                 to="/"
                 activeClassName="active"
+                id="landinglink"
                 className="nav-links"
                 onClick={handleLogout}
               >
-                <button className="btn btn-dark mt-3" >Please go back & Login again!</button>
+                <button  className="btn btn-dark mt-3" >Please go back & Login again!</button>
               </Link>
     
     </div>

@@ -59,16 +59,16 @@ function LoginForm(){
           <h1 className='mt-4'style={{fontWeight:"bold"}} >Login</h1>
           <Form>
           
-            <TextBar label="username" name="username" type="text" />
-            <TextBar label="password" name="password" type="password" />
+            <TextBar id="username" label="username" name="username" type="text" />
+            <TextBar id="password" label="password" name="password" type="password" />
             <span className="">
                   New User
                   <nav>
-                    <Link to="/Register"><h4 style={{color:'black'}}>Signup</h4></Link>
+                    <Link id="registerlink" to="/Register"><h4 style={{color:'black'}}>Signup</h4></Link>
                   </nav>
                 </span>
-            <button className="btn btn-dark mt-3" type="submit">Login</button>
-            <button className="btn btn-danger mt-3 ml-3"style={{marginLeft:15}} type="reset">Reset</button>
+            <button id="loginbutton" className="btn btn-dark mt-3" type="submit">Login</button>
+            <button id="resetbutton" className="btn btn-danger mt-3 ml-3"style={{marginLeft:15}} type="reset">Reset</button>
           </Form>
         </div>
       )}

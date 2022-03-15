@@ -77,20 +77,20 @@ function RegisterForm(){
           <h1 className='mt-4'style={{fontWeight:"bold"}} >Register</h1>
           <Form>
           
-            <TextBar label="Name" name="name" type="text" />
-            <TextBar label="Username" name="username" type="text" />
-            <TextBar label="Mobile" name="mobile" type="text" />
-            <TextBar label="Email" name="email" type="email" />
-            <TextBar label="password" name="password" type="password" />
+            <TextBar id="name" label="Name" name="name" type="text" />
+            <TextBar id="username" label="Username" name="username" type="text" />
+            <TextBar id="mobilenumber" label="Mobile" name="mobile" type="text" />
+            <TextBar id="email" label="Email" name="email" type="email" />
+            <TextBar id="password" label="password" name="password" type="password" />
             <span className="">
                   Already Have Account?
                   <nav>
-                    <Link to="/Login"><h4 style={{color:'black'}}>login</h4></Link>
+                    <Link id="loginlink" to="/Login"><h4 style={{color:'black'}}>login</h4></Link>
                   </nav>
                 </span>
-            <button className="btn btn-dark mt-3" type="submit">Register</button>
+            <button id="registerbutton" className="btn btn-dark mt-3" type="submit">Register</button>
             
-            <button className="btn btn-danger mt-3 ml-3"style={{marginLeft:15}} type="reset">Reset</button>
+            <button id="resetbutton" className="btn btn-danger mt-3 ml-3"style={{marginLeft:15}} type="reset">Reset</button>
           </Form>
 
         </div>

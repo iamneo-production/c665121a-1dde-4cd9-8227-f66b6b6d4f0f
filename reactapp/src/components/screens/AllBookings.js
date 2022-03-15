@@ -10,7 +10,7 @@ function AllBookings(){
     const getAllBookings=()=>{
         axiosObject.get(`/getAppointments`).then(
             (response)=>{
-              console.log("centers fetched");
+              console.log("Appointments fetched");
               setData(response.data);
             },(error)=>{
               console.log(error);

@@ -84,15 +84,15 @@ function Appoinments(){
           <Form>
           <div className='inp'>
           <h1 className='mt-4'style={{fontWeight:"bold", paddingBottom: "2vh"}} >Product Details</h1>
-            <TextBar label="Name of Product" name="productName" type="text" />
-            <TextBar label="Model Number" name="productModelNo" type="text" />
-            <TextBar label="Mobile" name="contactNumber" type="text" />
-            <TextBar label="Date of Purchase" name="purchaseDate" type="date" />
-            <TextBar label="Date of booking" name="bookingDate" type="date" />
-            <TextBar label="Time of booking" placeholder="choose time in 24hr format" name="bookingTime" type="time" />
-            <TextBar  label="Problem" placeholder="Description about problem" name="problemStatement" type="text" style={{height:"80px"}}/>
-            <button className="btn btn-dark mt-3 ml-3"style={{marginLeft:15}} type="reset">Reset</button>
-            <button className="btn btn-success mt-3"style={{marginLeft:40}} type="submit">BOOK</button>
+            <TextBar id="productname" label="Name of Product" name="productName" type="text" />
+            <TextBar id="modelnumber" label="Model Number" name="productModelNo" type="text" />
+            <TextBar id="contactnumber" label="Mobile" name="contactNumber" type="text" />
+            <TextBar id="purchasedate" label="Date of Purchase" name="purchaseDate" type="date" />
+            <TextBar id="bookingdate" label="Date of booking" name="bookingDate" type="date" />
+            <TextBar id="bookingtime" label="Time of booking" placeholder="choose time in 24hr format" name="bookingTime" type="time" />
+            <TextBar id="problemstatement" label="Problem" placeholder="Description about problem" name="problemStatement" type="text" style={{height:"80px"}}/>
+            <button id="resetbutton" className="btn btn-dark mt-3 ml-3"style={{marginLeft:15}} type="reset">Reset</button>
+            <button id="bookappointmentbutton" className="btn btn-success mt-3"style={{marginLeft:40}} type="submit">BOOK</button>
          </div> 
           </Form>
         </div>

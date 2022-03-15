@@ -5,7 +5,7 @@ services:
     image: mysql:5.7
     restart: always
     environment:
-      MYSQL_DATABASE: 'watchservice'
+      MYSQL_DATABASE: 'watchproject'
       MYSQL_ROOT_PASSWORD: '9679'
     ports:
       - '9090:9090'

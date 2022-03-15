@@ -62,16 +62,16 @@ function AddServiceForm(){
           <h1 className='mt-4'style={{fontWeight:"bold"}} >Add Center </h1>
           <Form>
           
-            <TextBar label="Center Id"  placeholder="Enter the id" name="id" type="number" id="addId" />
-            <TextBar label="Name"  placeholder="Enter the Name" name="name" type="text" id="addName" />
-            <TextBar label="Mobile"  placeholder="Enter the Phone number" name="mobile" type="text" id="addNumber" />
-            <TextBar label="Address"  placeholder="Enter the address" name="address" type="text" id="addAddress" />
-            <TextBar label="ImageUrl"  placeholder="Enter the Image Url" name="imageurl" type="text" id="addImageUrl" />
-            <TextBar label="Email"  placeholder="Enter the mail id" name="email" type="email" id=" addEmail"/>
+            <TextBar label="Center Id"  placeholder="Enter the id" name="id" type="number" id="addCenterId" />
+            <TextBar label="Name"  placeholder="Enter the Name" name="name" type="text" id="addCenterName" />
+            <TextBar label="Mobile"  placeholder="Enter the Phone number" name="mobile" type="text" id="addCenterNumber" />
+            <TextBar label="Address"  placeholder="Enter the address" name="address" type="text" id="addCenterAddress" />
+            <TextBar label="ImageUrl"  placeholder="Enter the Image Url" name="imageurl" type="text" id="addCenterImageUrl" />
+            <TextBar label="Email"  placeholder="Enter the mail id" name="email" type="email" id="addCenterEmail"/>
             <TextBar  label="Description" placeholder="Description about Service center" name="details" type="text" id="addCenterDescription" style={{height:"80px"}}/>
 
-            <button className="btn btn-dark mt-3" type="submit">Add</button>
-            <button className="btn btn-danger mt-3 ml-3"style={{marginLeft:15}} type="reset">Reset</button>
+            <button id="addCenterButton" className="btn btn-dark mt-3" type="submit">Add</button>
+            <button id="resetbutton" className="btn btn-danger mt-3 ml-3"style={{marginLeft:15}} type="reset">Reset</button>
             
             
           </Form>

@@ -91,10 +91,10 @@ function ViewUserBookings(){
                                             Edit
                                         </Tooltip>
                                     }>
-                                        <Button onClick={()=>{handleShow();setModalData(val)}} data-toggle="modal"><i className="fa fa-pencil-square-o fa-lg" aria-hidden="true"></i></Button>
+                                        <Button id="editappointmentbutton" onClick={()=>{handleShow();setModalData(val)}} data-toggle="modal"><i className="fa fa-pencil-square-o fa-lg" aria-hidden="true"></i></Button>
                                         </OverlayTrigger></TableCell>
                                 
-                                <TableCell><button onClick={() => remove(val.book_id)}><i className="fa fa-trash fa-lg" aria-hidden="true"></i></button></TableCell>
+                                <TableCell><button id="deleteappointmentbutton" onClick={() => remove(val.book_id)}><i className="fa fa-trash fa-lg" aria-hidden="true"></i></button></TableCell>
                                 </TableRow>
                                 )})
                        }

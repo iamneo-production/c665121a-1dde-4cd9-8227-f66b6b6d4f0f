@@ -55,13 +55,13 @@ const sendData=(data)=>{
         <h1 className='mt-4'style={{fontWeight:"bold"}} >Edit User Details </h1>
         <Form>
         
-          <TextBar label="Name"   name="name" type="text" id="editName"/>
+          <TextBar label="Name"   name="name" type="text" id="editNameOfUser"/>
           <TextBar label="username"   name="username" type="text" id="editusername"/>
-          <TextBar label="Email"   name="email" type="email" id=" editEmail"/>
-          <TextBar label="Mobile"   name="mobile" type="number" id="editNumber" />
+          <TextBar label="Email"   name="email" type="email" id="editUserEmail"/>
+          <TextBar label="Mobile"   name="mobile" type="number" id="editUserNumber" />
           
-         <button className="btn btn-dark mt-3" type="submit">Update</button>
-          <button className="btn btn-danger mt-3 ml-3"style={{marginLeft:15}} type="reset">Reset</button>
+         <button id="updateUserButton" className="btn btn-dark mt-3" type="submit">Update</button>
+          <button id="resetbutton" className="btn btn-danger mt-3 ml-3"style={{marginLeft:15}} type="reset">Reset</button>
           
           
         </Form>

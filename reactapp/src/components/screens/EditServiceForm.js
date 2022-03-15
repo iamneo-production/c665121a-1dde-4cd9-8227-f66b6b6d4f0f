@@ -63,17 +63,17 @@ function EditServiceForm(){
           <h1 className='mt-4'style={{fontWeight:"bold"}} >Edit Center </h1>
           <Form>
           
-            <TextBar label="Center Id"   name="id" type="number" id="editId" />
-            <TextBar label="Name"   name="name" type="text" id="editName" />
-            <TextBar label="Mobile"   name="mobile" type="number" id="editNumber" />
-            <TextBar label="Address" name="address" type="text" id="editAddress" />
-            <TextBar label="ImageUrl"  name="imageurl" type="text" id="editImageUrl" />
-            <TextBar label="Email"   name="email" type="email" id=" editEmail"/>
+            <TextBar label="Center Id"   name="id" type="number" id="editCenterId" />
+            <TextBar label="Name"   name="name" type="text" id="editCenterName" />
+            <TextBar label="Mobile"   name="mobile" type="number" id="editCenterNumber" />
+            <TextBar label="Address" name="address" type="text" id="editCenterAddress" />
+            <TextBar label="ImageUrl"  name="imageurl" type="text" id="editCenterImageUrl" />
+            <TextBar label="Email"   name="email" type="email" id="editCenterEmail"/>
             <TextBar  label="Description"  name="details" type="text" id="editCenterDescription" style={{height:"80px"}}/>
 
             
-           <button className="btn btn-dark mt-3" type="submit">Update</button>
-            <button className="btn btn-danger mt-3 ml-3"style={{marginLeft:15}} type="reset">Reset</button>
+           <button id="updateServiceCenterButton" className="btn btn-dark mt-3" type="submit">Update</button>
+            <button id="resetbutton" className="btn btn-danger mt-3 ml-3"style={{marginLeft:15}} type="reset">Reset</button>
             
             
           </Form>

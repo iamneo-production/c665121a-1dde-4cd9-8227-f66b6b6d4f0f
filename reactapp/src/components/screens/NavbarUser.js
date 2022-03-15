@@ -13,7 +13,7 @@ function NavbarUser() {
     <>
       <nav className="navbar">
         <div className="nav-container">
-          <NavLink exact to="/" className="nav-logo">
+          <NavLink exact to="/" id="landinglink" className="nav-logo">
             Wrist Wear
           </NavLink>
 
@@ -23,6 +23,7 @@ function NavbarUser() {
                 exact
                 to="/user/home"
                 activeClassName="active"
+                id="userhomelink"
                 className="nav-links"
                 onClick={handleClick}
               >
@@ -34,6 +35,7 @@ function NavbarUser() {
                 exact
                 to="/user/mybooking"
                 activeClassName="active"
+                id="mybookinglink"
                 className="nav-links"
                 onClick={handleClick}
               >
@@ -45,6 +47,7 @@ function NavbarUser() {
                 exact
                 to="/"
                 activeClassName="active"
+                id="logoutlink"
                 className="nav-links"
                 onClick={handleLogout}
               >

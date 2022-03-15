@@ -90,8 +90,8 @@ function User() {
                           <td>{val.email}</td>
                           <td colSpan={2}>{val.mobile}</td>
 
-                          <td><button onClick={() => remove(val.id)} className='action'>remove</button></td>
-                          <td><button className='action' onClick={()=>{openModal();setModalData(val)}}>edit</button>
+                          <td><button id="removeUserButton" onClick={() => remove(val.id)} className='action'>remove</button></td>
+                          <td><button id="editUserButton" className='action' onClick={()=>{openModal();setModalData(val)}}>edit</button>
                           <Modal
                         isOpen={modalIsOpen}
                         onAfterOpen={afterOpenModal}

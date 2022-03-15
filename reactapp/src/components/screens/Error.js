@@ -14,7 +14,7 @@ export default function Error() {
     <h1 className='mt-3'>Ooops.....</h1>
     <img src={meowImg} alt="cat"style={{height:"50%",marginTop:20}}/>
     <h1>You are lost in meow world</h1>
-    <Link to="/"><button className="btn btn-dark mt-3" >Take me home</button></Link>
+    <Link id="landinglink" to="/"><button className="btn btn-dark mt-3" >Take me home</button></Link>
     </div>
   )
 }

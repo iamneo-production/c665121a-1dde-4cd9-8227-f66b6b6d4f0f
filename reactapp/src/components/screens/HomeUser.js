@@ -58,7 +58,7 @@ const HomeUser = () => {
     <div className="home-body"style={{display:"flex",flexDirection:"column",alignItems:"center"}}>
 
         <Container className='text-center mt-4' style={{width:"40%"}}>
-          <Form.Control  placeholder="Search" value = {filter} onChange={SearchText.bind(this)} />
+          <Form.Control  id="searchbar" placeholder="Search" value = {filter} onChange={SearchText.bind(this)} />
 
         </Container>
         <div className="fixed-content">
@@ -83,7 +83,7 @@ const HomeUser = () => {
                 </ListGroup>
 
                 <Card.Body style={{alignItems:"center"}}>
-                <Link to="/user/Appointment"><button className="btn btn-success " onClick={()=>{throwDetails(center)}}>View</button></Link>
+                <Link id="booklink" to="/user/Appointment"><button className="btn btn-success " onClick={()=>{throwDetails(center)}}>Book</button></Link>
                 </Card.Body>
               </Card>
              

@@ -42,7 +42,7 @@ const Search = () => {
             "details": 'fastrack service'
         }
     ]);
-    const deleteCourse=(value)=>{
+    const deleteCenter=(value)=>{
         axiosObject.delete(`/deleteCenter/${value}`).then(
             (response)=>{
                 console.log("center Deleted");
@@ -71,7 +71,7 @@ const Search = () => {
     <div className="home-body"style={{display:"flex",flexDirection:"column",alignItems:"center"}}>
 
         <Container className='text-center mt-4' style={{width:"40%"}}>
-          <Form.Control  placeholder="Search" value = {filter} onChange={SearchText.bind(this)} />
+          <Form.Control id="searchbar" placeholder="Search" value = {filter} onChange={SearchText.bind(this)} />
 
         </Container>
         <div className="fixed-content">
@@ -96,9 +96,9 @@ const Search = () => {
                 </ListGroup>
 
                 <Card.Body style={{alignItems:"center"}}>
-                <Link to="/admin/edit"><button className="btn btn-dark " onClick={()=>{throwDetails(center)}} style={{marginRight:10}}>Edit</button></Link>
-                <Link to="/admin/home"><button className="btn btn-danger" onClick={()=>{
-                    deleteCourse(center.id);
+                <Link id="editServicecenterLink" to="/admin/edit"><button className="btn btn-dark " onClick={()=>{throwDetails(center)}} style={{marginRight:10}}>Edit</button></Link>
+                <Link id="deleteServicecenterLink" to="/admin/home"><button id="deleteServiceCenterButton" className="btn btn-danger" onClick={()=>{
+                    deleteCenter(center.id);
                 }} >Remove</button></Link>
                 </Card.Body>
               </Card>

@@ -75,15 +75,15 @@ function EditBooking({booking}){
             
               <TextBar label="Product Name"   name="productName" type="text" id="editName" />
               <TextBar label="ModelNumber"   name="productModelNo" type="text" id="editNumber" />
-              <TextBar label="DateOfPurchase" name="purchaseDate" type="date" id="editDate" />
-              <TextBar label="DateOfBooking" name="bookingDate" type="date" id="editDate" />
+              <TextBar label="DateOfPurchase" name="purchaseDate" type="date" id="editPurchaseDate" />
+              <TextBar label="DateOfBooking" name="bookingDate" type="date" id="editBookingDate" />
               <TextBar label="Contact"  name="contactNumber" type="text" id="editContact" />
-              <TextBar  label="Slot Time"  name="bookingTime" type="time" id="editSlot" />
-              <TextBar label="Problem"   name="problemStatement" type="text" id=" editProblem"style={{height:"80px"}}/>
+              <TextBar  label="Slot Time"  name="bookingTime" type="time" id="editBookingTime" />
+              <TextBar label="Problem"   name="problemStatement" type="text" id="editProblemStatement"style={{height:"80px"}}/>
   
               
-             <button className="btn btn-dark mt-3" type="submit">Update</button>
-              <button className="btn btn-danger mt-3 ml-3"style={{marginLeft:15}} type="reset">Reset</button>
+             <button id="updateBookingButton" className="btn btn-dark mt-3" type="submit">Update</button>
+              <button id="resetButton" className="btn btn-danger mt-3 ml-3"style={{marginLeft:15}} type="reset">Reset</button>
               
               
             </Form>
