@@ -5,6 +5,7 @@ import java.util.List;
 
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import com.examly.springapp.entity.ServiceCenter;
@@ -19,8 +20,13 @@ public class ServiceCenterController {
 	@PostMapping("/addServiceCenter")
 	public ServiceCenter addCenter(@RequestBody ServiceCenter center) {
 		Optional<String> currentUserLogin = SecurityUtils.getCurrentUserLogin();
-		System.out.println(currentUserLogin.get());
-		return this.centerService.addCenter(center);
+		System.out.println("add Center request isAdmin-> "+currentUserLogin.get().equals("admin"));
+		if(currentUserLogin.get().equals("admin")){
+			System.out.println(currentUserLogin.get());
+			return this.centerService.addCenter(center);
+		}else {
+			return null;
+		}
 	}
 	
 	@GetMapping("/viewAllCenter")
