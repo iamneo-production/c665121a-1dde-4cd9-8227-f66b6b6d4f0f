@@ -72,30 +72,34 @@ function Appoinments(){
       }}
     >
       {formik => (
-          <div className='contents'>
-        <div className='Regdiv'>
-        <img src={center.imageurl} alt="" className="img" />
-        <div className='address'>
-            <label>Name : {center.name}</label><br />
-            <label>Address :{center.address}</label><br />
-            <label>E-mail:{center.email}</label><br />
-            <label>Phone Number: {center.mobile}</label><br />
-        </div>
-          <Form>
-          <div className='inp'>
-          <h1 className='mt-4'style={{fontWeight:"bold", paddingBottom: "2vh"}} >Product Details</h1>
-            <TextBar id="productname" label="Name of Product" name="productName" type="text" />
-            <TextBar id="modelnumber" label="Model Number" name="productModelNo" type="text" />
-            <TextBar id="contactnumber" label="Mobile" name="contactNumber" type="text" />
-            <TextBar id="purchasedate" label="Date of Purchase" name="purchaseDate" type="date" />
-            <TextBar id="bookingdate" label="Date of booking" name="bookingDate" type="date" />
-            <TextBar id="bookingtime" label="Time of booking" placeholder="choose time in 24hr format" name="bookingTime" type="time" />
-            <TextBar id="problemstatement" label="Problem" placeholder="Description about problem" name="problemStatement" type="text" style={{height:"80px"}}/>
-            <button id="resetbutton" className="btn btn-dark mt-3 ml-3"style={{marginLeft:15}} type="reset">Reset</button>
-            <button id="bookappointmentbutton" className="btn btn-success mt-3"style={{marginLeft:40}} type="submit">BOOK</button>
-         </div> 
-          </Form>
-        </div>
+        <div className='contents' >
+          <div className='Regdiv row'>
+            <div className='col-md-6 left'>
+              <img src={center.imageurl} alt="" className="img" />
+              <div className='address'>
+                  <label>Name : {center.name}</label><br />
+                  <label>Address :{center.address}</label><br />
+                  <label>E-mail:{center.email}</label><br />
+                  <label>Phone Number: {center.mobile}</label><br />
+              </div>
+            </div>
+            <div className='col-md-6'>
+              <Form>
+                <div className='inp'>
+                  <h1 className='mt-4'style={{fontWeight:"bold", paddingBottom: "2vh"}} >Product Details</h1>
+                  <TextBar id="productname" label="Name of Product" placeholder="Enter product name" name="productName" type="text" />
+                  <TextBar id="modelnumber" label="Model Number" placeholder="Enter model number" name="productModelNo" type="text" />
+                  <TextBar id="contactnumber" label="Mobile" name="contactNumber" type="text" />
+                  <TextBar id="purchasedate" label="Date of Purchase" name="purchaseDate" type="date" />
+                  <TextBar id="bookingdate" label="Date of booking" name="bookingDate" type="date" />
+                  <TextBar id="bookingtime" label="Time of booking" placeholder="choose time in 24hr format" name="bookingTime" type="time" />
+                  <TextBar id="problemstatement" label="Problem" placeholder="Description about problem" name="problemStatement" type="text" style={{height:"80px"}}/>
+                  <button id="resetbutton" className="btn btn-dark mt-3 ml-3"style={{marginLeft:15}} type="reset">Reset</button>
+                  <button id="bookappointmentbutton" className="btn btn-success mt-3"style={{marginLeft:40}} type="submit">BOOK</button>
+                </div> 
+              </Form>
+            </div>
+          </div>
         </div>
       )}
     </Formik>
