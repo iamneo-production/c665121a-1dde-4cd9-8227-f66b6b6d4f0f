@@ -1,53 +1,45 @@
 package pages;
 
 import config.TestConfig;
-import lombok.extern.slf4j.Slf4j;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class LoginPage extends TestConfig {
   WebDriver driver;
-
-  By UserName = By.id("username");
-
-  By password = By.id("password");
-
-  By titleText =By.id("barone");
-
-  By login = By.id("loginbutton");
-
-  By reset = By.id("resetbutton");
+  WebDriverWait wait;
 
   public LoginPage(WebDriver driver){
     this.driver = driver;
+    this.wait = new WebDriverWait(driver, 15);
+    PageFactory.initElements(driver,this);
   }
 
-  public void setUserName(String strUserName){
-    driver.findElement(UserName).sendKeys(strUserName);
-  }
+  @FindBy(id = "username")
+  WebElement userName;
 
-  public void setPassword(String strPassword){
-    driver.findElement(password).sendKeys(strPassword);
-  }
+  @FindBy(id = "password")
+  WebElement passWord;
 
-  public void clickLogin(){
-    driver.findElement(login).click();
-  }
+  @FindBy(id = "loginbutton")
+  WebElement login;
 
-  public void clickReset(){
-    driver.findElement(reset).click();
-  }
+  @FindBy(id = "resetbutton")
+  WebElement reset;
 
-  public String getLoginTitle(){
-    return    driver.findElement(titleText).getText();
-  }
+  @FindBy(id = "landinglink")
+  WebElement verifyLandingLink;
 
   public void login(String strUserName,String strPasword){
-
-    this.setUserName(strUserName);
-
-    this.setPassword(strPasword);
-
-    this.clickLogin();
+      this.wait.until(ExpectedConditions.visibilityOf(userName));
+      userName.sendKeys(strUserName);
+      this.wait.until(ExpectedConditions.visibilityOf(passWord));
+      passWord.sendKeys(strPasword);
+      this.wait.until(ExpectedConditions.visibilityOf(login));
+      login.click();
+      this.wait.until(ExpectedConditions.visibilityOf(verifyLandingLink));
   }
 }
