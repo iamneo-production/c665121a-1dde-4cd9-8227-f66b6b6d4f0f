@@ -18,9 +18,8 @@ function ViewUserBookings(){
             bookingTime:"4pm to 6pm",
         },
     ]);
-    let user=JSON.parse(localStorage.getItem('user'));
     const getUserBookings=()=>{
-        axiosObject.get(`/getAppointments/${user.id}`).then(
+        axiosObject.get(`/getAppointments/user`).then(
             (response)=>{
               console.log("centers fetched");
               setData(response.data);

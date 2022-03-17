@@ -15,7 +15,7 @@ import NavbarUser from './NavbarUser';
 const HomeUser = () => {
 
   const throwDetails = (value)=>{
-    localStorage.setItem("data",JSON.stringify(value));
+    localStorage.setItem("SelectedCenter",JSON.stringify(value));
   }
     const getAllCenters=()=>{
         axiosObject.get(`/viewAllCenter`).then(

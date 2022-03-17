@@ -8,7 +8,7 @@ public interface AppointmentService {
     Appointment addAppointment(Appointment appointment);
 
     List<Appointment> allAppointments();
-
+    List<Appointment> getUserAppointments();
     Appointment editAppointment(Appointment appointment);
 
     Appointment deleteAppointment(long id);

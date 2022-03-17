@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useEffect, useState} from 'react';
 import { Formik, Form} from 'formik';
 import TextBar from './TextBar';
 import * as Yup from 'yup';
@@ -7,18 +7,35 @@ import '../styles/Appointments.css';
 import NavbarUser from './NavbarUser';
 
 function Appoinments(){
-  let center=JSON.parse(localStorage.getItem('data'));
-  let user=JSON.parse(localStorage.getItem('user'));
+  let center=JSON.parse(localStorage.getItem('SelectedCenter'));
+ 
+  const getUser=()=>{
+    axiosObject.get(`/mydetails`).then(
+        (response)=>{
+          console.log("user fetched");
+          setUser(response.data);
+        },(error)=>{
+          console.log(error);
+        }
+      );
+  };
+
+  const [user,setUser] = useState([{"id":1,"mobile":"4534332323"}]);
+  
+  useEffect(()=>{
+    document.title= "watchService || SlotBooking"
+    getUser();
+    },[]);
   const validate = Yup.object({
     productName: Yup.string()
       
       .required('Name of the product is Required'),
     productModelNo: Yup.string()
       .required('Model number is Required'),
-    contactNumber:Yup.string()
-      .min(10,'should be 10 number')
-      .max(10,'should be 10 number')
-      .required('Mobile Number is Required'),
+    // contactNumber:Yup.string()
+    //   .min(10,'should be 10 number')
+    //   .max(10,'should be 10 number')
+    //   .required('Mobile Number is Required'),
     purchaseDate: Yup.date()
       .transform((curr, orig) => orig === '' ? null : curr)
       .required('Date is required')
@@ -41,6 +58,7 @@ function Appoinments(){
     axiosObject.post(`/appointment`,data).then(
       (response)=>{
         console.log(response);
+        localStorage.removeItem('SelectedCenter');
         window.location.replace("/user/mybooking");
       
       },(error)=>{
@@ -53,6 +71,7 @@ function Appoinments(){
     <div className='App-temp'>
     <NavbarUser/>
     <Formik
+    enableReinitialize={true}
       initialValues={{
         u_id:user.id,
         sc_id:center.id,

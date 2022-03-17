@@ -21,10 +21,6 @@ function LoginForm(){
       console.log(res);
       localStorage.setItem("isAuthenticated", "true");
       localStorage.setItem("usertoken",res.data.jwtToken);
-      axiosObject.get("/mydetails").then(res=>{
-        console.log(res.data);
-        localStorage.setItem("user",JSON.stringify(res.data));
-      })
       if(data.username==="admin") {
         localStorage.setItem("isAdmin","true");
         toast.success('Welcome Admin',{autoClose: 2000});
