@@ -10,7 +10,7 @@ import Form from 'react-bootstrap/Form';
 import { Link } from "react-router-dom";
 import '../styles/Home.css';
 import NavbarUser from './NavbarUser';
-
+import CenterImages from "../assets/centerImages/CenterImages.js";
 
 const HomeUser = () => {
 
@@ -69,7 +69,7 @@ const HomeUser = () => {
             <Col style={{ padding: '2rem' }} >
                 
               <Card style={{ width: '18rem',borderRadius:20 ,marginRight:5,marginLeft:5}}>
-                    <Card.Img variant="top" src={center.imageurl} style={{ width: '10rem', height: '10rem',marginLeft:"20%",marginTop:10,borderRadius:"50%" }} />
+                    <Card.Img variant="top" src={CenterImages[center.imageurl]} style={{ width: '10rem', height: '10rem',marginLeft:"20%",marginTop:10,borderRadius:"50%" }} />
                 <Card.Body>
                   <Card.Title>{center.name}</Card.Title>
                   <Card.Text>

@@ -5,7 +5,7 @@ import * as Yup from 'yup';
 import axiosObject from '../../api/bootapi';
 import '../styles/Appointments.css';
 import NavbarUser from './NavbarUser';
-
+import CenterImages from '../assets/centerImages/CenterImages';
 function Appoinments(){
   let center=JSON.parse(localStorage.getItem('SelectedCenter'));
  
@@ -94,7 +94,7 @@ function Appoinments(){
         <div className='contents' >
           <div className='Regdiv row'>
             <div className='col-md-6 left'>
-              <img src={center.imageurl} alt="" className="img" />
+              <img src={CenterImages[center.imageurl]} alt="" className="img" />
               <div className='address'>
                   <label>Name : {center.name}</label><br />
                   <label>Address :{center.address}</label><br />
