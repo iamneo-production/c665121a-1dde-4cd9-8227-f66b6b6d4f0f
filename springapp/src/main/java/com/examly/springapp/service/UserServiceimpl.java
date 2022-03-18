@@ -13,10 +13,7 @@ import com.examly.springapp.entity.Users;
 @Service
 public class UserServiceimpl implements UserServices {
 	List<Users> list;
-	public UserServiceimpl() {
-		list=new ArrayList<>();
-//		list.add(new Users("krishna","heloKrish","674577437","hello@gmail.com","password"));
-	}
+
 	@Autowired
 	public UserDao dao;
 

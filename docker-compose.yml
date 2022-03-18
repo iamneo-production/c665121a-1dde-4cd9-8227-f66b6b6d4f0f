@@ -8,7 +8,7 @@ services:
       MYSQL_DATABASE: 'watchproject'
       MYSQL_ROOT_PASSWORD: '9679'
     ports:
-      - '9090:9090'
+      - '3306:3306'
     expose:
       - '3306'
     volumes:
