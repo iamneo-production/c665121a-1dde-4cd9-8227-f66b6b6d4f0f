@@ -28,6 +28,7 @@ public class AppointmentController {
     public List<Appointment> getUserAppointments(){
         return this.Appointments.getUserAppointments();
     }
+
     @PutMapping("/editAppointment")
     public Appointment editAppointment(@RequestBody Appointment appointment){
         return this.Appointments.editAppointment(appointment);

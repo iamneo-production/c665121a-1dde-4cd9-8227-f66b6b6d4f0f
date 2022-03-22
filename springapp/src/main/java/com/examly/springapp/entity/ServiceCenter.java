@@ -1,14 +1,16 @@
 package com.examly.springapp.entity;
 
 
-import javax.persistence.Entity;
-
-import javax.persistence.Id;
+import javax.persistence.*;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
 @Getter @Setter @AllArgsConstructor @NoArgsConstructor
 
@@ -22,6 +24,12 @@ public class ServiceCenter {
 	private String mobile;
 	private String imageurl;
 	private String details;
+
+	@OneToMany(cascade = CascadeType.ALL,orphanRemoval = true)
+	@JoinColumn(name="center_id", referencedColumnName = "id")
+	List<Appointment> appointments = new ArrayList<>();
+
+
 //	@Override
 //	public String toString() {
 //		return "ServiceCenter [id=" + id + ", name=" + name + ", email=" + email + ", address=" + address + ", mobile="

@@ -5,10 +5,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Getter @Setter @AllArgsConstructor @NoArgsConstructor
 @Entity
@@ -17,8 +14,13 @@ public class Appointment {
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     private long book_id;
 
+    @Transient
     private long u_id;
+
+    @Transient
     private long sc_id;
+
+
     private String productName;
     private String purchaseDate;
     private String productModelNo;
