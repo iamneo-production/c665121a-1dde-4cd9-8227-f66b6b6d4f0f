@@ -1,13 +1,10 @@
 package com.examly.springapp.entity;
-import javax.persistence.Column;
-
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 import lombok.*;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 @Getter @Setter @AllArgsConstructor @NoArgsConstructor
@@ -26,6 +23,10 @@ public class Users {
 	@Column(unique=true)
 	private String email;
 	private String password;
+
+	@OneToMany(cascade = CascadeType.ALL,orphanRemoval = true)
+	@JoinColumn(name="user_id", referencedColumnName = "id")
+	List<Appointment> appointments = new ArrayList<>();
 
 //	public String getPassword() {
 //		return password;
