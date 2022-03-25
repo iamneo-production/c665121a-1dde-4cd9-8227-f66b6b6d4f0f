@@ -4,7 +4,7 @@ import NavbarUser from './NavbarUser';
 import Table from '@mui/material/Table';
 import { Modal,Button,OverlayTrigger,Tooltip } from "react-bootstrap";
 import { TableBody, TableCell, TableHead, TableRow } from "@mui/material";
-
+import Rating from "./Rating";
 import EditBooking from "./EditBooking";
 import '../styles/MyBookings.css';
 
@@ -56,8 +56,13 @@ function ViewUserBookings(){
         },
     ]);
     const[show,setShow]=useState(false);
+    const[show1,setShow1]=useState(false);
     const handleShow = () => setShow(true);
+    const handleShow1 = () => setShow1(true);
+
     const handleClose = () => setShow(false);
+    const handleClose1 = () => setShow1(false);
+
     const today = new Date().toISOString().slice(0,10);
     //const time = new Date().toTimeString().slice(0,5);
 
@@ -98,7 +103,8 @@ function ViewUserBookings(){
                                 <TableCell>{val.bookingTime}</TableCell>
                                {val.bookingDate <= today && val.bookingTime <= time
                             ?
-                               <TableCell><button id="reviewappointmentbutton">Review</button>
+                               <TableCell><button id="reviewappointmentbutton" onClick={() => {handleShow1()}}>Review</button>
+                               
                                </TableCell>
                                 
                            :  
@@ -121,7 +127,16 @@ function ViewUserBookings(){
                        }
                     </TableBody>
                     </Table>
-                    
+                   {/*} <button onClick={() => {handleShow1()}}>
+                        Reviews</button>*/}
+                    <Modal show={show1} onHide={handleClose1} >
+                        <Modal.Header closeButton>
+                            <Modal.Body>
+                                <Rating/>
+                            </Modal.Body>
+                        </Modal.Header>
+
+                    </Modal>
                   
                     <Modal show={show} onHide={handleClose} >
                         <Modal.Header closeButton>
