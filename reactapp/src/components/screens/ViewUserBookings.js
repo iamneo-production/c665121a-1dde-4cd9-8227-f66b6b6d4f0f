@@ -84,7 +84,7 @@ function ViewUserBookings(){
              <TableCell>Booking No.</TableCell>
          <TableCell>Product Name</TableCell>
          <TableCell>Date</TableCell>
-         <TableCell>Time</TableCell>
+         <TableCell>Timing</TableCell>
          </TableHead>
                     <TableBody>
                        {
