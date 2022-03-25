@@ -58,7 +58,7 @@ function Rating() {
       <button
         style={styles.button}
       >
-        Submit1
+        Submit
       </button>
       
     </div>
