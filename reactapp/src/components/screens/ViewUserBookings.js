@@ -21,7 +21,7 @@ function ViewUserBookings(){
     const getUserBookings=()=>{
         axiosObject.get(`/getAppointments/user`).then(
             (response)=>{
-              console.log("centers fetched");
+              console.log("booking fetched");
               setData(response.data);
             },(error)=>{
               console.log(error);
