@@ -58,6 +58,19 @@ function ViewUserBookings(){
     const[show,setShow]=useState(false);
     const handleShow = () => setShow(true);
     const handleClose = () => setShow(false);
+    const today = new Date().toISOString().slice(0,10);
+    //const time = new Date().toTimeString().slice(0,5);
+
+    const[time,setTime]= useState("0:0");
+      setInterval(updateTime,1000);
+      function updateTime(){
+          const obj = new Date();
+           var current = obj.toTimeString().slice(0,5);
+          setTime(current);
+      }
+
+    console.log(time);
+    console.log(today);
         return(
      <>
          <NavbarUser/>
@@ -83,7 +96,13 @@ function ViewUserBookings(){
                                 <TableCell>{val.productName}</TableCell>
                                 <TableCell>{val.bookingDate}</TableCell>
                                 <TableCell>{val.bookingTime}</TableCell>
-                                <TableCell>
+                               {val.bookingDate <= today && val.bookingTime <= time
+                            ?
+                               <TableCell><button id="reviewappointmentbutton">Review</button>
+                               </TableCell>
+                                
+                           :  
+                           <TableCell>
                                     <OverlayTrigger
                                     overlay={
                                         <Tooltip id={'tooltip-top'}>
@@ -91,14 +110,18 @@ function ViewUserBookings(){
                                         </Tooltip>
                                     }>
                                         <Button id="editappointmentbutton" onClick={()=>{handleShow();setModalData(val)}} data-toggle="modal"><i className="fa fa-pencil-square-o fa-lg" aria-hidden="true"></i></Button>
-                                        </OverlayTrigger></TableCell>
-                                
-                                <TableCell><button id="deleteappointmentbutton" onClick={() => remove(val.book_id)}><i className="fa fa-trash fa-lg" aria-hidden="true"></i></button></TableCell>
-                                </TableRow>
+                                        </OverlayTrigger>
+                                <button style = {{ marginLeft:20}} id="deleteappointmentbutton" onClick={() => remove(val.book_id)}><i className="fa fa-trash fa-lg" aria-hidden="true"></i></button>
+                            </TableCell>
+                              
+                           
+                                }
+                                  </TableRow>
                                 )})
                        }
                     </TableBody>
                     </Table>
+                    
                   
                     <Modal show={show} onHide={handleClose} >
                         <Modal.Header closeButton>
