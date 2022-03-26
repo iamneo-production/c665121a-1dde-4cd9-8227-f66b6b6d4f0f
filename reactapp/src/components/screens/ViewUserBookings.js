@@ -69,8 +69,8 @@ function ViewUserBookings(){
           setTime(current);
       }
 
-    console.log(time);
-    console.log(today);
+    // console.log(time);
+    // console.log(today);
         return(
      <>
          <NavbarUser/>
