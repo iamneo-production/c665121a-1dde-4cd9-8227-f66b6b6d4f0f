@@ -34,6 +34,10 @@ public class AppointmentController {
         return this.Appointments.editAppointment(appointment);
     }
 
+    @PutMapping("/payment/{id}")
+    public Appointment editPayment(@PathVariable String id){
+        return this.Appointments.editPayment(Long.parseLong(id));
+    }
     @DeleteMapping("/deleteAppointment/{id}")
     public Appointment deleteAppointment(@PathVariable String id){
         return this.Appointments.deleteAppointment(Long.parseLong(id));

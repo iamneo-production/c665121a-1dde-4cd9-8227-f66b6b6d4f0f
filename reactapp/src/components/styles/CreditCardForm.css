@@ -3,7 +3,7 @@
   background: linear-gradient(135deg, var(--primary),var(--secondary));
 }
 .container {
-    margin-top: 10%;
+    margin-top: 5%;
     width: 100%;
     display: flex;
     justify-content: center;

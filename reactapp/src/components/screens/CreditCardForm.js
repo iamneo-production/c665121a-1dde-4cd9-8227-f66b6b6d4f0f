@@ -2,10 +2,12 @@ import React,{useState} from "react";
 import NavbarUser from './NavbarUser';
 import { Button,Form , Row, Col } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
-
+import axiosObject from '../../api/bootapi';
 import '../styles/CreditCardForm.css';
 import Cards from "react-credit-cards";
 import "react-credit-cards/es/styles-compiled.css";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 const CreditCardForm = () => {
@@ -14,8 +16,6 @@ const CreditCardForm = () => {
     cardNumber: '',
     cardExpiration: '',
 })
-
-const [pay,setPay] = React.useState(false);
 
 const handleChange = e => {
     const { name, value } = e.target
@@ -26,13 +26,27 @@ const handleChange = e => {
    
 }
 
+const editPayment=()=>{
+  let id = localStorage.getItem('appId');
+  axiosObject.put(`/payment/${id}`).then(
+    (response)=>{
+      localStorage.removeItem("appId");
+      toast.success('payment successful',{autoClose: 2000});
+      setTimeout(() => { window.location.replace('/user/mybooking'); }, 2000);
+    },(error)=>{
+      console.log(error);
+    }
+  )
+}
+
 const handleSubmit =e => {
     e.preventDefault();
-    setPay(true);
+   editPayment();
     
 };
-console.log(pay);
   return (
+    <>
+    <ToastContainer/>
     <div className="App-temp">
        <NavbarUser/>
       <div className="container">
@@ -108,6 +122,22 @@ console.log(pay);
                 </Form.Group>
               </Col>
             </Row>
+            <Row>
+            <Col>
+                <Form.Group>
+                  CVV number:
+                  <Form.Control
+                    type="text"
+                    id="charge"
+                    required
+                    name="cvv"
+                    placeholder="Please Enter your cvv"
+                    minLength="3"
+                    maxLength="3"
+                  />
+                </Form.Group>
+              </Col>
+            </Row>
          <br/>
             <Button
               size={"block"}
@@ -123,6 +153,7 @@ console.log(pay);
         </div>
       </div>
     </div>
+    </>
   );
 };
 

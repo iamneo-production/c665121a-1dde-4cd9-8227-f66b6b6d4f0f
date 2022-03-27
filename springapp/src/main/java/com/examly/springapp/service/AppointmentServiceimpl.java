@@ -25,7 +25,7 @@ public class AppointmentServiceimpl implements AppointmentService{
 
     @Override
     public Appointment addAppointment(Appointment appointment) {
-
+        appointment.setPaymentDone("no");
         this.appointmentDao.save(appointment);
         //adding to center
         List<ServiceCenter> centers = this.centerDao.findAll();
@@ -73,6 +73,20 @@ public class AppointmentServiceimpl implements AppointmentService{
             if(a.getBook_id()==id){
                 appointment = a;
                 this.appointmentDao.delete(appointment);
+            }
+        }
+        return appointment;
+    }
+
+    @Override
+    public Appointment editPayment(long id) {
+        List<Appointment> appointments = getUserAppointments();
+        Appointment appointment = new Appointment();
+        for(Appointment x:appointments){
+            if(x.getBook_id()==id){
+                x.setPaymentDone("yes");
+                appointment=x;
+                this.appointmentDao.save(appointment);
             }
         }
         return appointment;

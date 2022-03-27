@@ -12,4 +12,6 @@ public interface AppointmentService {
     Appointment editAppointment(Appointment appointment);
 
     Appointment deleteAppointment(long id);
+
+    Appointment editPayment(long id);
 }

@@ -37,8 +37,8 @@ function App() {
         <AdminRoute path="/admin/usermanagement" exact component={User}></AdminRoute>
         <AdminRoute path="/admin/allBooking" exact component={AllBookings}></AdminRoute>
         <UserRoute path="/user/mybooking" exact component={ViewUserBookings}></UserRoute>
+        <Route path="/user/payment" exact component={CreditCardForm}></Route>
         <Route path="/unauthorized" exact component={UnAuthorized}></Route>
-        <Route path="/payment" exact component={CreditCardForm}></Route>
         <Route path="/**" exact component={Error}></Route>
       </Switch>
     </Router>

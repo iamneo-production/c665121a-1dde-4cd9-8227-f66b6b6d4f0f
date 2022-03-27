@@ -55,6 +55,10 @@ function ViewUserBookings(){
             bookingTime:"4pm to 6pm",
         },
     ]);
+    const handlepay=()=>{
+        window.location.replace("/user/payment");
+    }
+
     const[show,setShow]=useState(false);
     const[show1,setShow1]=useState(false);
     const handleShow = () => setShow(true);
@@ -101,16 +105,28 @@ function ViewUserBookings(){
                                 <TableCell>{val.productName}</TableCell>
                                 <TableCell>{val.bookingDate}</TableCell>
                                 <TableCell>{val.bookingTime}</TableCell>
-                               {val.bookingDate <= today && val.bookingTime <= time
+                               { val.bookingDate <= today && val.bookingTime <= time && val.paymentDone==="no"
                             ?
                                <TableCell>
-                                   
-                                   <button style = {{backgroundColor:"green",borderRadius:5,color:"white"}} id="reviewappointmentbutton" onClick={() => {handleShow1();setModalData(val)} }data-toggle="modal">Review</button>
+                                
+                                   <button style = {{backgroundColor:"#42C2FF",borderRadius:5,color:"white"}} id="paymentbutton" onClick={() => {localStorage.setItem("appId",val.book_id);  handlepay();} }>payment</button>
                                
                                </TableCell>
                                 
-                           :  
+                           :  val.bookingDate <= today && val.bookingTime <= time && val.paymentDone==="yes" && val.rating===null
+                           ?
                            <TableCell>
+                                   
+                           <button style = {{backgroundColor:"#00C897",borderRadius:5,color:"white"}} id="reviewappointmentbutton" onClick={() => {handleShow1();setModalData(val)} }data-toggle="modal">Review</button>
+                       
+                            </TableCell>
+
+                           :val.bookingDate <= today && val.bookingTime <= time && val.paymentDone==="yes" && val.rating!=null
+                           ? 
+                           <TableCell>
+
+                           </TableCell>
+                           :<TableCell>
                                     <OverlayTrigger
                                     overlay={
                                         <Tooltip id={'tooltip-top'}>
