@@ -30,7 +30,7 @@ public class Appointment {
     private String bookingTime;
 
     @OneToOne(cascade = CascadeType.ALL,orphanRemoval = true)
-    @JoinColumn(name="appointment_id",referencedColumnName = "book_id")
+    @JoinColumn(name="book_id")
     private Rating rating;
 
 }

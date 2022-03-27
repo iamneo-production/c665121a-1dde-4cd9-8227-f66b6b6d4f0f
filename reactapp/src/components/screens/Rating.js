@@ -15,7 +15,7 @@ const colors = {
 
 
 
-function Rating() {
+function Rating({booking}) {
   const [currentValue, setCurrentValue] = useState(0);
   const [hoverValue, setHoverValue] = useState(undefined);
   const stars = Array(5).fill(0)
@@ -36,12 +36,11 @@ function Rating() {
   return (
     <><Formik
       initialValues={{
-        rating: '',
         experience: '',
       }}
       onSubmit={values => {
+        Object.assign(values,{starCount:currentValue,book_id:booking.book_id})
         console.log(values);
-        console.log(currentValue);
       } }
     >
       {formik => (<div style={styles.container}>

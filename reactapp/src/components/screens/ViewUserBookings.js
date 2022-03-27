@@ -103,7 +103,7 @@ function ViewUserBookings(){
                                 <TableCell>{val.bookingTime}</TableCell>
                                {val.bookingDate <= today && val.bookingTime <= time
                             ?
-                               <TableCell><button id="reviewappointmentbutton" onClick={() => {handleShow1()}}>Review</button>
+                               <TableCell><button id="reviewappointmentbutton" onClick={() => {handleShow1();setModalData(val)} }data-toggle="modal">Review</button>
                                
                                </TableCell>
                                 
@@ -132,7 +132,7 @@ function ViewUserBookings(){
                     <Modal show={show1} onHide={handleClose1} >
                         <Modal.Header closeButton>
                             <Modal.Body>
-                                <Rating/>
+                                <Rating booking={modalData}/>
                             </Modal.Body>
                         </Modal.Header>
 

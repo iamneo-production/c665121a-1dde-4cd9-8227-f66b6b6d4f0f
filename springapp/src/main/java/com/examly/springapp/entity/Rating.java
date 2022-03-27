@@ -5,10 +5,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+
 @Getter @Setter @AllArgsConstructor @NoArgsConstructor
 @Entity
 public class Rating {
@@ -18,6 +16,10 @@ public class Rating {
 
     private int starCount;
     private String experience;
+    private String userName;
+
+    @Transient
+    private long booking_id;
 
     private String givenDate;
 }
