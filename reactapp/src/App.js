@@ -18,7 +18,7 @@ import AllBookings from "./components/screens/AllBookings";
 import AdminRoute from "./AdminRoute";
 import UserRoute from "./UserRoute";
 import UnAuthorized from "./components/screens/UnAuthorized";
-
+import CreditCardForm from "./components/screens/CreditCardForm";
 function App() {
   return (
     
@@ -38,7 +38,7 @@ function App() {
         <AdminRoute path="/admin/allBooking" exact component={AllBookings}></AdminRoute>
         <UserRoute path="/user/mybooking" exact component={ViewUserBookings}></UserRoute>
         <Route path="/unauthorized" exact component={UnAuthorized}></Route>
-        
+        <Route path="/payment" exact component={CreditCardForm}></Route>
         <Route path="/**" exact component={Error}></Route>
       </Switch>
     </Router>
