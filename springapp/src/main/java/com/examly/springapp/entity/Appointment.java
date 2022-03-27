@@ -30,6 +30,8 @@ public class Appointment {
     private String bookingDate;
     private String bookingTime;
 
+    private boolean paymentDone;
+
     @OneToOne(cascade = CascadeType.ALL,orphanRemoval = true)
     @JoinColumn(name="bookId")
     private Rating rating;

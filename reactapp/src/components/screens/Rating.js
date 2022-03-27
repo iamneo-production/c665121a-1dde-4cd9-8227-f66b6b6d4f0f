@@ -4,7 +4,9 @@ import { FaStar } from "react-icons/fa";
 import { Formik } from "formik";
 import { Form } from "formik";
 import TextBar from "./TextBar";
-
+import axiosObject from '../../api/bootapi';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 const colors = {
@@ -31,16 +33,28 @@ function Rating({booking}) {
   const handleMouseLeave = () => {
     setHoverValue(undefined)
   }
+  const sendRatings=(data)=>{
+    axiosObject.post("/rating",data).then(res=>{
+      toast.success('thanks for rate us',{autoClose: 2000});
+      setTimeout(() => { window.location.replace('/user/mybooking'); }, 2000);
 
+    }).catch(err=>{
+      console.log(err);
+      toast.error('something error happens',{autoClose: 2000});
+    })
+  }
 
   return (
-    <><Formik
+    <>
+     <ToastContainer/>
+    <Formik
       initialValues={{
         experience: '',
       }}
       onSubmit={values => {
         Object.assign(values,{starCount:currentValue,book_id:booking.book_id})
         console.log(values);
+        sendRatings(values);
       } }
     >
       {formik => (<div style={styles.container}>

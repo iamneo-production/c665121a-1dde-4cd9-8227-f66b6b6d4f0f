@@ -103,7 +103,9 @@ function ViewUserBookings(){
                                 <TableCell>{val.bookingTime}</TableCell>
                                {val.bookingDate <= today && val.bookingTime <= time
                             ?
-                               <TableCell><button id="reviewappointmentbutton" onClick={() => {handleShow1();setModalData(val)} }data-toggle="modal">Review</button>
+                               <TableCell>
+                                   
+                                   <button style = {{backgroundColor:"green",borderRadius:5,color:"white"}} id="reviewappointmentbutton" onClick={() => {handleShow1();setModalData(val)} }data-toggle="modal">Review</button>
                                
                                </TableCell>
                                 
