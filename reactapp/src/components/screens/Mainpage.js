@@ -5,6 +5,7 @@ import '../styles/Mainpage.css';
 function Mainpage(){
     useEffect(() => {
         document.title = "WatchService  ||  Welcome";
+        localStorage.clear();
       },[]);
     return(
         

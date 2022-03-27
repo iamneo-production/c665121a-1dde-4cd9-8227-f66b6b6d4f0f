@@ -54,13 +54,7 @@ public class AppointmentServiceimpl implements AppointmentService{
     @Override
     public List<Appointment>getUserAppointments(){
         Users user = dao.findByUsername(SecurityUtils.getCurrentUserLogin().get());
-//        List<Appointment> temp = allAppointments();
         List<Appointment> result = user.getAppointments();
-//        for(Appointment A:temp){
-//            if(A.getU_id()==(user.getId())){
-//                result.add(A);
-//            }
-//        }
 
         return result;
     }

@@ -21,6 +21,7 @@ public class MyController {
 	public List<Users> getUser(){
 		return this.User.getUser();
 	}
+
 	@GetMapping("/getOnlyUser")
 	public List<Users> getOnlyUser(){
 		List<Users> allUser = getUser();

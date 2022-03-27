@@ -28,6 +28,7 @@ public class Users {
 	@JoinColumn(name="user_id", referencedColumnName = "id")
 	List<Appointment> appointments = new ArrayList<>();
 
+
 //	public String getPassword() {
 //		return password;
 //	}
