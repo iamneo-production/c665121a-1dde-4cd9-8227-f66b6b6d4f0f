@@ -12,6 +12,7 @@ import javax.persistence.*;
 public class Appointment {
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
+    @Column(name = "bookId")
     private long book_id;
 
     @Transient
@@ -30,7 +31,7 @@ public class Appointment {
     private String bookingTime;
 
     @OneToOne(cascade = CascadeType.ALL,orphanRemoval = true)
-    @JoinColumn(name="book_id")
+    @JoinColumn(name="bookId")
     private Rating rating;
 
 }

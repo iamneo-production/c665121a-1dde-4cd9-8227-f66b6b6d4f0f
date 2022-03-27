@@ -28,6 +28,9 @@ public class RatingServiceimpl implements RatingService{
     private AppointmentDao appointmentDao;
 
     @Autowired
+    private AppointmentService appointmentService;
+
+    @Autowired
     private RatingDao ratingDao;
 
     @Autowired
@@ -39,14 +42,6 @@ public class RatingServiceimpl implements RatingService{
         rating.setUserName(user);
         this.ratingDao.save(rating);
 
-        //adding to appointment for mapping
-        List<Appointment> appointments= this.appointmentDao.findAll();
-        for(Appointment x:appointments){
-            if(rating.getBooking_id()==x.getBook_id()){
-                x.setRating(rating);
-                this.appointmentDao.save(x);
-            }
-        }
         return rating;
     }
 
@@ -105,7 +100,7 @@ public class RatingServiceimpl implements RatingService{
         List<Rating> ratings = getRatings();
         Rating rating = new Rating();
         for(Rating x:ratings){
-            if(Objects.equals(x.getId(),id)){
+            if(Objects.equals(x.getBook_id(),id)){
                 rating = x;
                 this.ratingDao.delete(rating);
 
