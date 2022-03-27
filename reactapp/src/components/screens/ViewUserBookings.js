@@ -70,13 +70,13 @@ function ViewUserBookings(){
     const today = new Date().toISOString().slice(0,10);
     //const time = new Date().toTimeString().slice(0,5);
 
-    const[time,setTime]= useState("0:0");
-      setInterval(updateTime,1000);
-      function updateTime(){
-          const obj = new Date();
-           var current = obj.toTimeString().slice(0,5);
-          setTime(current);
-      }
+    // const[time,setTime]= useState("0:0");
+    //   setInterval(updateTime,1000);
+    //   function updateTime(){
+    //       const obj = new Date();
+    //        var current = obj.toTimeString().slice(0,5);
+    //       setTime(current);
+    //   }
 
     // console.log(time);
     // console.log(today);
@@ -105,7 +105,7 @@ function ViewUserBookings(){
                                 <TableCell>{val.productName}</TableCell>
                                 <TableCell>{val.bookingDate}</TableCell>
                                 <TableCell>{val.bookingTime}</TableCell>
-                               { val.bookingDate <= today && val.bookingTime <= time && val.paymentDone==="no"
+                               { val.bookingDate <= today  && val.paymentDone==="no"
                             ?
                                <TableCell>
                                 
@@ -113,7 +113,7 @@ function ViewUserBookings(){
                                
                                </TableCell>
                                 
-                           :  val.bookingDate <= today && val.bookingTime <= time && val.paymentDone==="yes" && val.rating===null
+                           :  val.bookingDate <= today  && val.paymentDone==="yes" && val.rating===null
                            ?
                            <TableCell>
                                    
@@ -121,7 +121,7 @@ function ViewUserBookings(){
                        
                             </TableCell>
 
-                           :val.bookingDate <= today && val.bookingTime <= time && val.paymentDone==="yes" && val.rating!=null
+                           :val.bookingDate <= today  && val.paymentDone==="yes" && val.rating!=null
                            ? 
                            <TableCell>
 
