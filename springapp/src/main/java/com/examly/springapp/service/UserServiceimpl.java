@@ -3,8 +3,10 @@ package com.examly.springapp.service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -54,7 +56,13 @@ public class UserServiceimpl implements UserServices {
 
 	@Override
 	public Users editUser(Users user) {
-		return this.dao.save(user);
+		Optional<Users> userTemp = this.dao.findById(user.getId());
+		Users user1 = userTemp.orElseThrow(()->new RuntimeException("no such data found"));
+		user1.setName(user.getName());
+		user1.setUsername(user.getUsername());
+		user1.setEmail(user.getEmail());
+		user1.setMobile(user.getMobile());
+		return this.dao.save(user1);
 	}
 
 	@Override

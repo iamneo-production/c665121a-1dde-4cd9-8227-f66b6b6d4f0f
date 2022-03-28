@@ -2,7 +2,7 @@
   height: 150vh;
   background: linear-gradient(135deg, var(--primary),var(--secondary));
 }
-.container {
+.container-credit {
     margin-top: 5%;
     width: 100%;
     display: flex;

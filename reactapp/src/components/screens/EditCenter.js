@@ -1,5 +1,4 @@
 import React, {useEffect} from 'react';
-import '../styles/EditCenter.css';
 import EditServiceForm from './EditServiceForm';
 import NavBar from './Navbar';
 import CenterImages from '../assets/centerImages/CenterImages';
@@ -15,7 +14,7 @@ function EditCenter(){
         <div className='edit-temp'>
         <div className="container mt-5 ">
             <div className="row" style={{justifyContent:'space-around'}}>
-                <div className="col-md-5" style={{justifyContent:"center",alignItems:"center"}}>
+                <div className="col-md-4" style={{justifyContent:"center",alignItems:"center"}}>
                     <img src={CenterImages[center.imageurl]} alt="" style={{height:300,width:300,borderRadius:"50%",marginTop:"20%"}}/>
                     <h1 className='mt-3'>{center.name}</h1>
                     {/* <div className='edit-details'>
@@ -27,7 +26,7 @@ function EditCenter(){
                         <h3 className='text-center'>Details:{center.details}</h3>
                     </div> */}
                 </div>
-                <div className="col-md-5 text-center">
+                <div className="col-md-4 text-center">
                     <EditServiceForm/>
                 </div>
 

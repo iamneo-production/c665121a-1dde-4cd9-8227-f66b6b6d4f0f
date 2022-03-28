@@ -63,7 +63,7 @@ function EditServiceForm(){
           <h1 className='mt-4'style={{fontWeight:"bold"}} >Edit Center </h1>
           <Form>
           
-            <TextBar label="Center Id"   name="id" type="number" id="editCenterId" />
+            <TextBar readOnly={true} label="Center Id"   name="id" type="number" id="editCenterId" />
             <TextBar label="Name"   name="name" type="text" id="editCenterName" />
             <TextBar label="Mobile"   name="mobile" type="number" id="editCenterNumber" />
             <TextBar label="Address" name="address" type="text" id="editCenterAddress" />

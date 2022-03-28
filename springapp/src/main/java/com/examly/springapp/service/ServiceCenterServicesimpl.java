@@ -43,9 +43,19 @@ public class ServiceCenterServicesimpl implements ServiceCenterServices {
 	}
 	@Override
 	public ServiceCenter updateCenter(ServiceCenter center) {
-		// TODO Auto-generated method stub
-		this.centerDao.save(center);
-		return center;
+		Optional<ServiceCenter> centerTemp = this.centerDao.findById(center.getId());
+		ServiceCenter center1 = centerTemp.orElseThrow(()->new RuntimeException("No suh data found"));
+
+		center1.setName(center.getName());
+		center1.setAddress(center.getAddress());
+		center1.setDetails(center.getDetails());
+		center1.setEmail(center.getEmail());
+		center1.setMobile(center.getMobile());
+		center1.setImageurl(center.getImageurl());
+
+
+		return this.centerDao.save(center1);
+
 	}
 
 }

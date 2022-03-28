@@ -49,7 +49,7 @@ const handleSubmit =e => {
     <ToastContainer/>
     <div className="App-temp">
        <NavbarUser/>
-      <div className="container">
+      <div className="container-credit">
         <div className="box justify-content-center align-items-center">
           <div className="formDiv">
           <div className="creditCard">

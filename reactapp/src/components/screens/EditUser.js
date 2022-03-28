@@ -4,7 +4,7 @@ import TextBar from './TextBar';
 import * as Yup from 'yup';
 import axiosObject from '../../api/bootapi';
 import '../styles/Appointments.css';
-import '../styles/EditCenter.css';
+import '../styles/EditUser.css';
 
   
 function EditUser({user}) {
