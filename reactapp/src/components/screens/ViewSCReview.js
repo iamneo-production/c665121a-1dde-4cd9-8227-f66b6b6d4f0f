@@ -8,18 +8,26 @@ import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import star from "../assets/star.png"
 const ViewSCReview = () => {
+  let id = localStorage.getItem('centerId');
+  const [data,setData]= useState([
 
-  const [data,setDate]= useState([
-      {
-        center_id: 1,
-        userName: "User1",
-        star: "3",
-        experience: "good",
-        givenDate: "2022-03-03",
-      }
   ]);
 
-
+    const getAllRatings=()=>{
+        axiosObject.get(`/getCentersRating/${id}`).then(
+            (response)=>{
+              console.log("Ratings fetched");
+              setData(response.data);
+              localStorage.removeItem("centerId");
+            },(error)=>{
+              console.log(error);
+            }
+          );
+    };
+    useEffect(()=>{
+    document.title= "watchService || Ratings"
+    getAllRatings();
+    },[]);
 
 
   return (
@@ -42,7 +50,7 @@ const ViewSCReview = () => {
                 
                 <Card style={{ width: '18rem',marginRight:5,marginLeft:5,backgroundColor:"#EFFFFD",borderRadius:"10%",boxShadow: "7px 7px 7px #9E9E9E",borderColor:"white"}}>
                       <div style={{display:'flex',marginLeft:'40%'}}>
-                        <Card.Title style={{fontSize:40}} >{val.star}</Card.Title>
+                        <Card.Title style={{fontSize:40}} >{val.starCount}</Card.Title>
                         <Card.Img variant="top" src={star} style={{height:40,width:40}}/>
                       </div>
                   <Card.Body>

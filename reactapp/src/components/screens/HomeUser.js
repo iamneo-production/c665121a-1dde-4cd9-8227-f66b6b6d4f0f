@@ -17,6 +17,9 @@ const HomeUser = () => {
   const throwDetails = (value)=>{
     localStorage.setItem("SelectedCenter",JSON.stringify(value));
   }
+  const throwID = (value)=>{
+    localStorage.setItem("centerId",JSON.stringify(value.id));
+  }
     const getAllCenters=()=>{
         axiosObject.get(`/viewAllCenter`).then(
             (response)=>{
@@ -84,7 +87,7 @@ const HomeUser = () => {
 
                 <Card.Body style={{alignItems:"center"}}>
                 <Link id="booklink" to="/user/Appointment"><button className="btn btn-success " onClick={()=>{throwDetails(center)}}>Book</button></Link>
-                <Link id="viewreviewlink" to="/user/viewscreview"><button className="btn btn-info "style={{marginLeft:10}} onClick={()=>{}}> Reviews</button></Link>
+                <Link id="viewreviewlink" to="/user/viewscreview"><button className="btn btn-info "style={{marginLeft:10}} onClick={()=>{throwID(center)}}> Reviews</button></Link>
                 </Card.Body>
               </Card>
              

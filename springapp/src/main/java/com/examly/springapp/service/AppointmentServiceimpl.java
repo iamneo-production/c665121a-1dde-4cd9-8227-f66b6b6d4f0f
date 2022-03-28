@@ -61,6 +61,7 @@ public class AppointmentServiceimpl implements AppointmentService{
 
     @Override
     public Appointment editAppointment(Appointment appointment) {
+        appointment.setPaymentDone("no");
         this.appointmentDao.save(appointment);
         return appointment;
     }
