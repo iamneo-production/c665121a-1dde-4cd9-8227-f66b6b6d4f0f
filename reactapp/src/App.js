@@ -19,6 +19,7 @@ import AdminRoute from "./AdminRoute";
 import UserRoute from "./UserRoute";
 import UnAuthorized from "./components/screens/UnAuthorized";
 import CreditCardForm from "./components/screens/CreditCardForm";
+import ViewSCReview from "./components/screens/ViewSCReview";
 function App() {
   return (
     
@@ -37,7 +38,8 @@ function App() {
         <AdminRoute path="/admin/usermanagement" exact component={User}></AdminRoute>
         <AdminRoute path="/admin/allBooking" exact component={AllBookings}></AdminRoute>
         <UserRoute path="/user/mybooking" exact component={ViewUserBookings}></UserRoute>
-        <Route path="/user/payment" exact component={CreditCardForm}></Route>
+        <UserRoute path="/user/viewscreview" exact component={ViewSCReview}></UserRoute>
+        <UserRoute path="/user/payment" exact component={CreditCardForm}></UserRoute>
         <Route path="/unauthorized" exact component={UnAuthorized}></Route>
         <Route path="/**" exact component={Error}></Route>
       </Switch>
