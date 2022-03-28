@@ -46,7 +46,7 @@ function Appoinments(){
     .transform((curr, orig) => orig === '' ? null : curr)
     .required('Date is required')
     .nullable()
-    // .min(new Date(), "Check the date properly!")
+    .min(new Date(), "Check the date properly!")
 ,
     problemStatement:  Yup.string()
       .required('Please enter the problem of the product'),
