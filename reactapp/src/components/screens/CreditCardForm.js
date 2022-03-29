@@ -15,6 +15,7 @@ const CreditCardForm = () => {
     cardName: '',
     cardNumber: '',
     cardExpiration: '',
+    cardSecurityCode:'',
 })
 
 const handleChange = e => {
@@ -24,6 +25,13 @@ const handleChange = e => {
         [name]: value
     })
    
+}
+
+const handleFocus = (e) => {
+  setValues({ 
+      ...values,
+      focus: (e.target.name === 'cardSecurityCode') ? 'cvc' : e.target.name
+  });
 }
 
 const editPayment=()=>{
@@ -58,6 +66,7 @@ const handleSubmit =e => {
             focused={values.focus}
             name={values.cardName}
             number={values.cardNumber}
+            cvc={values.cardSecurityCode}
           />
           
           </div>
@@ -71,6 +80,7 @@ const handleSubmit =e => {
                 placeholder="Cardholder Name"
                 value={values.cardName}
                 onChange={handleChange}
+                onFocus={handleFocus}
                 required
               />
           
@@ -85,6 +95,7 @@ const handleSubmit =e => {
                 placeholder="Card Number"
                 value={values.cardNumber}
                 onChange={handleChange}
+                onFocus={handleFocus}
                 minLength="16"
                 maxLength="16"
               />
@@ -101,8 +112,28 @@ const handleSubmit =e => {
                     placeholder="Expiration Date"
                     value={values.cardExpiration}
                     onChange={handleChange}
+                    onFocus={handleFocus}
                     minLength="4"
                     maxLength="4"
+                  />
+                </Form.Group>
+              </Col>
+            </Row>
+            <Row>
+            <Col>
+                <Form.Group>
+                  CVV number:
+                  <Form.Control
+                    type="tel"
+                    id="charge"
+                    required
+                    name="cardSecurityCode"
+                    placeholder="Please Enter your cvv"
+                    value={values.cardSecurityCode}
+                    onChange={handleChange}
+                    onFocus={handleFocus}
+                    minLength="3"
+                    maxLength="3"
                   />
                 </Form.Group>
               </Col>
@@ -122,22 +153,7 @@ const handleSubmit =e => {
                 </Form.Group>
               </Col>
             </Row>
-            <Row>
-            <Col>
-                <Form.Group>
-                  CVV number:
-                  <Form.Control
-                    type="text"
-                    id="charge"
-                    required
-                    name="cvv"
-                    placeholder="Please Enter your cvv"
-                    minLength="3"
-                    maxLength="3"
-                  />
-                </Form.Group>
-              </Col>
-            </Row>
+            
          <br/>
             <Button
               size={"block"}
