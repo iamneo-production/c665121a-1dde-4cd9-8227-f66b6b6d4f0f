@@ -17,8 +17,8 @@ const colors = {
 
 
 
-function Rating({booking}) {
-  const [currentValue, setCurrentValue] = useState(0);
+function EditRating({Rating}) {
+  const [currentValue, setCurrentValue] = useState(Rating.starCount);
   const [hoverValue, setHoverValue] = useState(undefined);
   const stars = Array(5).fill(0)
 
@@ -33,8 +33,8 @@ function Rating({booking}) {
   const handleMouseLeave = () => {
     setHoverValue(undefined)
   }
-  const sendRatings=(data)=>{
-    axiosObject.post("/rating",data).then(res=>{
+  const updateRatings=(data)=>{
+    axiosObject.put("/editRating",data).then(res=>{
       toast.success('Thanks for your feedback',{autoClose: 2000});
       setTimeout(() => { window.location.replace('/user/mybooking'); }, 2000);
 
@@ -44,17 +44,19 @@ function Rating({booking}) {
     })
   }
 
+
+
   return (
     <>
      <ToastContainer/>
     <Formik
       initialValues={{
-        experience: '',
+        experience: Rating.experience,
       }}
       onSubmit={values => {
-        Object.assign(values,{starCount:currentValue,book_id:booking.book_id})
+        Object.assign(values,{starCount:currentValue,book_id:Rating.book_id})
         console.log(values);
-        sendRatings(values);
+        updateRatings(values);
       } }
     >
       {formik => (<div style={styles.container}>
@@ -84,7 +86,8 @@ function Rating({booking}) {
 
           <TextBar id="experience" label="What's your experience" name="experience" type="text" />
 
-<button className="btn btn-success mt-3"style={{marginLeft:40}} type="submit">SUBMIT</button>
+        <button className="btn btn-success mt-3" style={{marginLeft:40}} type="submit">Update</button>
+       
         </Form>
 
       </div>)}</Formik></>
@@ -123,4 +126,4 @@ const styles = {
 
 
 
-export default Rating;
+export default EditRating;

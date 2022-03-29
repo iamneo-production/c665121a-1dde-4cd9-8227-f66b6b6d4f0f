@@ -34,6 +34,7 @@ public class RatingController {
     public List<Rating> getRatingsbyCenter(@PathVariable String id){
         return this.ratingService.getRatingbyCenter(Long.parseLong(id));
     }
+    
 
     @GetMapping("/getUserRating")
     public List<Rating> getRatingsbyUser(){

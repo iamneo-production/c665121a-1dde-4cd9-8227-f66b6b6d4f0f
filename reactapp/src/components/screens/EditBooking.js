@@ -21,13 +21,13 @@ function EditBooking({booking}){
       .transform((curr, orig) => orig === '' ? null : curr)
       .required('Date is required')
       .nullable()
-      .max(new Date(), "Check the date properly!")
+      .max(new Date(), "Purchase date should be today or before!")
       ,
     bookingDate: Yup.date()
     .transform((curr, orig) => orig === '' ? null : curr)
     .required('Date is required')
     .nullable()
-    .min(new Date(), "Check the date properly!")
+    .min(new Date(), "Booking date should be from tomorrow!")
 ,
     problemStatement:  Yup.string()
       .required('Please enter the problem of the product'),

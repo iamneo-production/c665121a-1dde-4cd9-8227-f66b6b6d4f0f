@@ -16,4 +16,5 @@ public interface RatingService {
     Rating editRating(Rating rating);
 
     Rating deleteRating(long id);
+
 }

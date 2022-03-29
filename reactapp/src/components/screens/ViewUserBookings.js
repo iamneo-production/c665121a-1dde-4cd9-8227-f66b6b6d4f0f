@@ -5,6 +5,7 @@ import Table from '@mui/material/Table';
 import { Modal,Button,OverlayTrigger,Tooltip } from "react-bootstrap";
 import { TableBody, TableCell, TableHead, TableRow } from "@mui/material";
 import Rating from "./Rating";
+import EditRating from "./EditRating";
 import EditBooking from "./EditBooking";
 import '../styles/MyBookings.css';
 
@@ -28,6 +29,18 @@ function ViewUserBookings(){
             }
           );
     };
+
+    const deleteRating=(value)=>{
+        axiosObject.delete(`/deleteRating/${value}`).then(res=>{
+            console.log("Rating Deleted");
+            console.log(res);
+            refreshPage();
+        }).catch(err=>{
+          console.log(err);
+        })
+    }
+
+
     const remove=(value)=>{
         axiosObject.delete(`/deleteAppointment/${value}`).then(
             (response)=>{
@@ -61,11 +74,14 @@ function ViewUserBookings(){
 
     const[show,setShow]=useState(false);
     const[show1,setShow1]=useState(false);
+    const[show2,setShow2]=useState(false);
     const handleShow = () => setShow(true);
     const handleShow1 = () => setShow1(true);
+    const handleShow2 = () => setShow2(true);
 
     const handleClose = () => setShow(false);
     const handleClose1 = () => setShow1(false);
+    const handleClose2 = () => setShow2(false);
 
     const today = new Date().toISOString().slice(0,10);
     //const time = new Date().toTimeString().slice(0,5);
@@ -117,14 +133,15 @@ function ViewUserBookings(){
                            ?
                            <TableCell>
                                    
-                           <button style = {{backgroundColor:"#00C897",borderRadius:5,color:"white"}} id="reviewappointmentbutton" onClick={() => {handleShow1();setModalData(val)} }data-toggle="modal">Review</button>
+                           <button style = {{backgroundColor:"#00C897",borderRadius:5,color:"white"}} id="reviewappointmentbutton" onClick={() => {handleShow1();setModalData(val)} }data-toggle="modal">Rate us</button>
                        
                             </TableCell>
 
                            :val.bookingDate <= today  && val.paymentDone==="yes" && val.rating!=null
                            ? 
                            <TableCell>
-
+                                <button style = {{backgroundColor:"#00C897",borderRadius:5,color:"black"}} id="reviewappointmentbutton" onClick={() => {handleShow2();setModalData(val.rating)} }data-toggle="modal">Your Review</button>
+                                <button style = {{borderColor:"#FD5D5D",borderRadius:5,color:"#FD5D5D",marginLeft:7}} onClick={()=>{deleteRating(val.book_id);}} >Delete review</button>
                            </TableCell>
                            :<TableCell>
                                     <OverlayTrigger
@@ -151,6 +168,15 @@ function ViewUserBookings(){
                         <Modal.Header closeButton>
                             <Modal.Body>
                                 <Rating booking={modalData}/>
+                            </Modal.Body>
+                        </Modal.Header>
+
+                    </Modal>
+
+                    <Modal show={show2} onHide={handleClose2} >
+                        <Modal.Header closeButton>
+                            <Modal.Body>
+                                <EditRating Rating={modalData}/>
                             </Modal.Body>
                         </Modal.Header>
 

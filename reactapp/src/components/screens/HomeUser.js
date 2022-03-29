@@ -35,15 +35,6 @@ const HomeUser = () => {
     getAllCenters();
     },[]);
     const [centers,setCenters]=useState([
-        {
-            "id":1,
-            "name": 'Fastrack Service',
-            "mobile": '8767896543',
-            "address": 'Chennai',
-            "imageurl": 'https://m.media-amazon.com/images/I/717uqMkUwNL._UY445_.jpg',
-           "email": 'fastrack@gmail.com',
-            "details": 'fastrack service'
-        }
     ]);
 
   const [filter,setFilter] = useState('');
