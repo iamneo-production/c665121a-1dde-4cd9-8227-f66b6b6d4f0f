@@ -3,6 +3,8 @@ import { Formik, Form} from 'formik';
 import TextBar from './TextBar';
 import * as Yup from 'yup';
 import axiosObject from '../../api/bootapi';
+import { ToastContainer, toast } from 'react-toastify';
+  import 'react-toastify/dist/ReactToastify.css';
 
 function AddServiceForm(){
   const validate = Yup.object({
@@ -30,14 +32,24 @@ function AddServiceForm(){
   const sendData=(data)=>{
     axiosObject.post(`/addServiceCenter`,data).then(
       (response)=>{
-        console.log(response);
-        window.location.replace('/admin/home');//look for good method this not the correct one
+        if(response.data==="id"){
+          toast.error('Id should be unique',{autoClose: 2000});
+        }
+        if(response.data==="exist"){
+          toast.error('Service center already exist',{autoClose: 2000});
+        }else if(response.data==="success"){
+          toast.success('center added successfully',{autoClose: 2000});
+          setTimeout(() => {  window.location.replace('/admin/home'); }, 2000);
+        }
+        //look for good method this not the correct one
       },(error)=>{
         console.log(error);
       }
     )
   }
   return (
+    <>
+    <ToastContainer/>
     <Formik
       initialValues={{
         id:'',
@@ -79,6 +91,7 @@ function AddServiceForm(){
         </div>
       )}
     </Formik>
+    </>
   )
 } 
 export default AddServiceForm;

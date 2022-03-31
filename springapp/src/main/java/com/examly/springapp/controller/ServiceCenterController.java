@@ -18,7 +18,7 @@ public class ServiceCenterController {
 	private ServiceCenterServices centerService;
 	
 	@PostMapping("/addServiceCenter")
-	public ServiceCenter addCenter(@RequestBody ServiceCenter center) {
+	public String addCenter(@RequestBody ServiceCenter center) {
 		Optional<String> currentUserLogin = SecurityUtils.getCurrentUserLogin();
 		System.out.println("add Center request isAdmin-> "+currentUserLogin.get().equals("admin"));
 		if(currentUserLogin.get().equals("admin")){
@@ -40,7 +40,7 @@ public class ServiceCenterController {
 		return deleted;
 	}
 	@PutMapping("/updateCenter")
-		public ServiceCenter updateCenter(@RequestBody ServiceCenter center) {
+		public String updateCenter(@RequestBody ServiceCenter center) {
 			return this.centerService.updateCenter(center);
 		}
 }

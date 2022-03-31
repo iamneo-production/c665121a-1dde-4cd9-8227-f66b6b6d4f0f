@@ -4,6 +4,7 @@ import com.examly.springapp.config.SecurityUtils;
 import java.util.ArrayList;
 import java.util.List;
 
+import java.util.Objects;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,10 +16,20 @@ import com.examly.springapp.entity.ServiceCenter;
 public class ServiceCenterServicesimpl implements ServiceCenterServices {
 	@Autowired
 	private ServiceCenterDao centerDao;
+
 	@Override
-	public ServiceCenter addCenter(ServiceCenter center) {
+	public String addCenter(ServiceCenter center) {
+		List<ServiceCenter> centers = viewAllCenter();
+		for(ServiceCenter x : centers){
+			if(x.getId()==center.getId()){
+				return "id";
+			}
+			if(x.getName().equals(center.getName()) && x.getAddress().equals(x.getAddress())){
+				return "exist";
+			}
+		}
 		this.centerDao.save(center);
-		return center;
+		return "success";
 	}
 	@Override
 	public List<ServiceCenter> viewAllCenter() {
@@ -42,9 +53,18 @@ public class ServiceCenterServicesimpl implements ServiceCenterServices {
 		return center;
 	}
 	@Override
-	public ServiceCenter updateCenter(ServiceCenter center) {
+	public String updateCenter(ServiceCenter center) {
 		Optional<ServiceCenter> centerTemp = this.centerDao.findById(center.getId());
 		ServiceCenter center1 = centerTemp.orElseThrow(()->new RuntimeException("No suh data found"));
+		List<ServiceCenter> centers = viewAllCenter();
+		for(ServiceCenter x: centers){
+			if(Objects.equals(x,center1)){
+				continue;
+			}
+			if(x.getName().equals(center.getName()) && x.getAddress().equals(center.getAddress())){
+				return "exist";
+			}
+		}
 
 		center1.setName(center.getName());
 		center1.setAddress(center.getAddress());
@@ -54,7 +74,8 @@ public class ServiceCenterServicesimpl implements ServiceCenterServices {
 		center1.setImageurl(center.getImageurl());
 
 
-		return this.centerDao.save(center1);
+		this.centerDao.save(center1);
+		return "success";
 
 	}
 

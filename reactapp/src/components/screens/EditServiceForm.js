@@ -3,6 +3,10 @@ import { Formik, Form} from 'formik';
 import TextBar from './TextBar';
 import * as Yup from 'yup';
 import axiosObject from '../../api/bootapi';
+import { ToastContainer, toast } from 'react-toastify';
+  import 'react-toastify/dist/ReactToastify.css';
+
+
 function EditServiceForm(){
 
   let center=JSON.parse(localStorage.getItem('data'));
@@ -32,15 +36,21 @@ function EditServiceForm(){
   const sendData=(data)=>{
     axiosObject.put(`/updateCenter`,data).then(
       (response)=>{
-        console.log(response);
-        localStorage.setItem('data',JSON.stringify(response.data));
-        window.location.replace('/admin/home');
+        if(response.data==="exist"){
+          toast.error('Service center already exist',{autoClose: 2000});
+        }else if(response.data==="success"){
+          localStorage.removeItem('data');
+          toast.success('center edited successfully',{autoClose: 2000});
+          setTimeout(() => {  window.location.replace('/admin/home'); }, 2000);
+        }
       },(error)=>{
         console.log(error);
       }
     )
   }
   return (
+    <>
+    <ToastContainer/>
     <Formik
       initialValues={{
         id:center.id,
@@ -81,6 +91,7 @@ function EditServiceForm(){
         </div>
       )}
     </Formik>
+    </>
   )
 } 
 export default EditServiceForm;

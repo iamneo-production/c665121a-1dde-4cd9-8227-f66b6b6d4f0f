@@ -7,12 +7,12 @@ import com.examly.springapp.entity.ServiceCenter;
 
 public interface ServiceCenterServices {
 
-	ServiceCenter addCenter(ServiceCenter center);
+	String addCenter(ServiceCenter center);
 
 	List<ServiceCenter> viewAllCenter();
 
 	ServiceCenter deleteCenter(long id);
 
-	ServiceCenter updateCenter(ServiceCenter center);
+	String updateCenter(ServiceCenter center);
 
 }
