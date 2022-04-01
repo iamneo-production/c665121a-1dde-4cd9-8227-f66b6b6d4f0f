@@ -24,7 +24,7 @@ public class ServiceCenterServicesimpl implements ServiceCenterServices {
 			if(x.getId()==center.getId()){
 				return "id";
 			}
-			if(x.getName().equals(center.getName()) && x.getAddress().equals(x.getAddress())){
+			if((x.getName().toLowerCase()).equals(center.getName().toLowerCase()) && (x.getAddress().toLowerCase()).equals(x.getAddress().toLowerCase())){
 				return "exist";
 			}
 		}
@@ -61,7 +61,7 @@ public class ServiceCenterServicesimpl implements ServiceCenterServices {
 			if(Objects.equals(x,center1)){
 				continue;
 			}
-			if(x.getName().equals(center.getName()) && x.getAddress().equals(center.getAddress())){
+			if((x.getName().toLowerCase()).equals(center.getName().toLowerCase()) && (x.getAddress().toLowerCase()).equals(center.getAddress().toLowerCase())){
 				return "exist";
 			}
 		}
